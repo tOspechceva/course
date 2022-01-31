@@ -6,43 +6,25 @@
 
 #IncludeRegexTransform: 
 
-C:/course/libs/algorithms/algorithm.h
-stdint.h 
--
-assert.h 
--
-memory.h 
--
-stdio.h 
--
-stdbool.h 
--
-c:/course/libs/algorithms/array/array.h
--
-
 C:/course/main.c
 assert.h
 -
 stdbool.h
 -
-c:/course/libs/algorithms/array/array.h
+stdio.h 
 -
-c:/course/libs/algorithms/algorithm.c
+stdint.h 
+-
+c:/course/libs/data_structures/vector/vector.h
 -
 
-c:/course/libs/algorithms/algorithm.c
+c:/course/libs/data_structures/vector/vector.h
+stddef.h
+-
 stdio.h
--
-limits.h
--
-assert.h
 -
 malloc.h
 -
-algorithm.h
-C:/course/libs/algorithms/algorithm.h
-
-c:/course/libs/algorithms/array/array.h
-stddef.h
+stdlib.h
 -
 

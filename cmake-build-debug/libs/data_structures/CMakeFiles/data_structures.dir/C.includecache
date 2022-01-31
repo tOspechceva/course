@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/course/libs/data_structures/bitset/bitset.c
+C:/course/libs/data_structures/vector/vector.c
+vector.h
+C:/course/libs/data_structures/vector/vector.h
+
+C:/course/libs/data_structures/vector/vector.h
+stddef.h
+-
 stdio.h
 -
-assert.h
+malloc.h
 -
-bitset.h
-C:/course/libs/data_structures/bitset/bitset.h
-
-C:/course/libs/data_structures/bitset/bitset.h
-stdint.h 
--
-stdbool.h 
+stdlib.h
 -
 
