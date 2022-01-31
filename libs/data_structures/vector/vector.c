@@ -26,7 +26,13 @@ void reserve(vector *v, size_t newCapacity){
 }
 
 void clear(vector *v){
-    git add .
-    git commit -m " memory usage of vector "
-    git push origin master
+   v->size=0;
+}
+
+void shrinkToFit(vector *v){
+    realloc(v->data, sizeof(int) * v->size);
+}
+
+void deleteVector(vector *v) {
+    free(&v);
 }

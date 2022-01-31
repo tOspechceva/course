@@ -24,6 +24,14 @@ vector createVector(size_t n);
 //памяти, выделенное под хранение элементов вектора.
 void reserve(vector *v, size_t newCapacity);
 
+// удаляет элементы из контейнера, но не освобождает выделенную память.
+void clear(vector *v);
+
+//  освобождает память, выделенную под неиспользуемые элементы
+void shrinkToFit(vector *v);
+
+// освобождает память, выделенную вектору
+void deleteVector(vector *v);
 
 
 #endif //COURSE_VECTOR_H
