@@ -1,0 +1,195 @@
+
+# Создано https://www.toptal.com/developers/gitignore/api/windows,клион,с
+# Редактировать по адресу https://www.toptal.com/developers/gitignore?templates=windows,клион,с
+
+### C ###
+# Предварительные условия
+*.d
+
+# Объектные файлы
+*.o
+*.ko
+*.obj
+*.elf
+
+# Вывод компоновщика
+*.
+ил *.карта
+*.exp
+
+# Предварительно Скомпилированные заголовки
+*.gch
+*.pch
+
+# Библиотеки
+*.lib
+*.a
+*.la
+*.lo
+
+# Общие объекты (вкл. Библиотеки DLL Windows)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Исполняемые
+файлы *.exe
+*.выход
+*.приложение
+*.i*86
+*.x86_64
+*.шестигранник
+
+# Отладочные файлы
+*.dSYM/
+*.су
+*.ибр
+*.pdb
+
+# Результаты компиляции модуля ядра
+*.mod*
+*.cmd
+.tmp_версии/
+модули.заказать
+Модуль.символы
+Mkfile.старый
+файл dkms.conf
+
+### КЛион ###
+# Охватывает IDE JetBrains: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm и Rider
+# Ссылка: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# Информация для конкретного пользователя
+.идея/**/workspace.xml
+.идея/**/tasks.xml
+.идея/**/usage.statistics.xml
+.идея/**/словари
+.идея/**/полка
+
+# Для конкретного пользователя AWS
+.идея/**/aws.xml
+
+# Сгенерированные файлы
+.идея/**/contentModel.xml
+
+# Конфиденциальные или файлы с высокой оттоком
+.идея/**/Источники данных/
+.идея/**/Источники данных.идентификаторы
+.идея/**/dataSources.local.xml
+.идея/**/sqlDataSources.xml
+.идея/**/dynamic.xml
+.идея/**/uiDesigner.xml
+.идея/**/dbnavigator.xml
+
+# Gradle
+.идея/**/gradle.xml
+.идея/**/библиотеки
+
+# Gradle и Maven с автоматическим импортом
+# При использовании Gradle или Maven с автоматическим импортом следует исключить файлы модулей,
+# так как они будут воссозданы и могут вызвать отток. Раскомментируйте, если используете
+# автоматический импорт.
+# .идея/артефакты
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .идея/*.iml
+# .идея/модули
+# *.iml
+# *.ipr
+
+# CMake
+cmake-сборка-*/
+
+# Плагин Mongo Explorer
+.идея/**/mongoSettings.xml
+
+# Формат проекта на основе файлов
+*.iws
+
+# Интеллект
+вышел/
+
+# mpeltonen/sbt-плагин для идеи
+.idea_модули/
+
+# Плагин JIRA
+atlassian-ide-plugin.xml
+
+# Курсивный плагин Clojure
+.idea/replstate.xml
+
+# Плагин
+SonarLint .идея/sonarlint/
+
+# Плагин Crashlytics (для Android Studio и IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.свойства
+crashlytics-сборка.свойства
+ткань.свойства
+
+# Клиент Rest на основе редактора
+.идея/HttpRequests
+
+# Android studio 3.1+ сериализованный файл кэша
+.идея/кэш/build_file_checksums.ser
+
+### Пластырь для клиона ###
+# Причина комментария: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
+
+# Плагин Sonarlint
+# https://plugins.jetbrains.com/plugin/7973-sonarlint
+.идея/**/sonarlint/
+
+# Плагин SonarQube
+# https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
+.идея/**/sonarIssues.xml
+
+# Плагин навигатора уценки
+# https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
+.идея/**/markdown-navigator.xml
+.идея/**/markdown-navigator-enh.xml
+.идея/**/уценка-навигатор/
+
+# Ошибка создания файла кэша
+# Смотри https://youtrack.jetbrains.com/issue/JBR-2257
+.идея/$CACHE_FILE$
+
+# Плагин CodeStream
+# https://plugins.jetbrains.com/plugin/12206-codestream
+.idea/codestream.xml
+
+### Окна ###
+# Файлы кэша миниатюр Windows
+Большие пальцы.дб
+Thumbs.db:зашифрованные
+пальцы.db
+ehthumbs_vista.db
+
+# Файл дампа
+*.stackdump
+
+# Файл конфигурации папки
+[Dd]esktop.ini
+
+# Корзина, используемая в общих файловых ресурсах
+$КОРЗИНА ДЛЯ МУСОРА/
+
+# Файлы установщика Windows
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Ярлыки Windows
+*.lnk
+
+# Конец https://www.toptal.com/developers/gitignore/api/windows,клион,
+.idea
