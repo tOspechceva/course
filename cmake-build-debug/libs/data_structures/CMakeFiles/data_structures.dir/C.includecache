@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/course/libs/data_structures/bitset/bitset.c
+stdio.h
+-
+assert.h
+-
+bitset.h
+C:/course/libs/data_structures/bitset/bitset.h
+
+C:/course/libs/data_structures/bitset/bitset.h
+stdint.h 
+-
+stdbool.h 
+-
+
