@@ -34,5 +34,5 @@ void shrinkToFit(vector *v){
 }
 
 void deleteVector(vector *v) {
-    free(&v);
+    free(v);
 }
