@@ -11,6 +11,8 @@ vector.h
 C:/course/libs/data_structures/vector/vector.h
 
 C:/course/libs/data_structures/vector/vector.h
+stdbool.h
+-
 stddef.h
 -
 stdio.h
