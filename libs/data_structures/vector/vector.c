@@ -2,11 +2,12 @@
 // Created by 123 on 31.01.2022.
 //
 
+#include <assert.h>
 #include "vector.h"
 
 void checkingForSize(vector *v) {
     if (v->data == NULL) {
-        fprintf(stderr, "bad alloc ");
+        fprintf(stderr, "bad alloc");
         exit(1);
     }
 }
@@ -23,6 +24,7 @@ void reserve(vector *v, size_t newCapacity) {
     else {
         realloc(v->data, sizeof(int) * newCapacity);
         checkingForSize(v);
+        v->capacity = newCapacity;
     }
 }
 
@@ -31,7 +33,7 @@ void clear(vector *v) {
 }
 
 void shrinkToFit(vector *v) {
-    realloc(v->data, sizeof(int) * v->size);
+    v->capacity = v->size;
 }
 
 void deleteVector(vector *v) {
@@ -47,15 +49,16 @@ bool isFull(vector *v) {
 }
 
 int getVectorValue(vector *v, size_t i) {
-    return v->data[i - 1];
+    return v->data[i];
 }
 
 void pushBack(vector *v, int x) {
-    if (isEmpty(v))
-        reserve(v, 1);
-    else if (isFull(v))
+    if (v->capacity == 0) {
+        realloc(v->data, sizeof(int));
+        v->capacity += 1;
+    } else if (isFull(v)) {
         reserve(v, (v->capacity) * 2);
-
+    }
     v->data[v->size] = x;
     v->size += 1;
 }
@@ -66,4 +69,22 @@ void popBack(vector *v) {
         exit(1);
     }
     v->size -= 1;
+}
+
+int *atVector(vector *v, size_t index) {
+    if (index >= v->capacity) {
+        fprintf(stderr, "IndexError: a[ %d ] is not exists", index);
+    } else if (v->capacity == 0 && index < 0) {
+        fprintf(stderr, "bad vector");
+        exit(1);
+    }
+    return (int *) &v->data[index];
+}
+
+int *back(vector *v) {
+    return atVector(v, v->capacity - 1);
+}
+
+int *front(vector *v) {
+    return atVector(v, v->size - 1);
 }

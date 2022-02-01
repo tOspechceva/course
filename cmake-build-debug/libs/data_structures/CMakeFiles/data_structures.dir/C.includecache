@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 C:/course/libs/data_structures/vector/vector.c
+assert.h
+-
 vector.h
 C:/course/libs/data_structures/vector/vector.h
 
