@@ -4,7 +4,7 @@
 # include <stdint.h >
 
 # include "c:/course/libs/data_structures/vector/vector.h"
-
+# include "c:/course/libs/data_structures/vector/vectorVoid.h"
 void test_pushBack_emptyVector() {
     vector v = createVector(3);
     pushBack(&v, 9);
@@ -131,6 +131,22 @@ void test_front_oneElementInVector() {
     deleteVector(&v);
 }
 
+void test_front() {
+    vector v = createVector(10);
+    v.size = 8;
+    assert(front(&v) == &v.data[7]);
+
+    deleteVector(&v);
+}
+
+void test_back() {
+    vector v = createVector(10);
+    v.size = 8;
+    assert(back(&v) == &v.data[9]);
+
+    deleteVector(&v);
+}
+
 void test() {
     test_pushBack_emptyVector();
     test_pushBack_fullVector();
@@ -146,10 +162,13 @@ void test() {
     test_atVector_requestToLastElement();
     test_back_oneElementInVector();
     test_front_oneElementInVector();
+    test_front();
+    test_back();
 }
 
 main() {
     test();
 
+    vectorVoid v;
     return 0;
 }

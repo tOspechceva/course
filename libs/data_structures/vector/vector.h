@@ -5,6 +5,7 @@
 #ifndef COURSE_VECTOR_H
 #define COURSE_VECTOR_H
 
+#include <assert.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>

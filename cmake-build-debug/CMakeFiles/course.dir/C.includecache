@@ -19,6 +19,8 @@ c:/course/libs/data_structures/vector/vector.h
 -
 
 c:/course/libs/data_structures/vector/vector.h
+assert.h
+-
 stdbool.h
 -
 stddef.h

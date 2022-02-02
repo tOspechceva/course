@@ -2,7 +2,7 @@
 // Created by 123 on 31.01.2022.
 //
 
-#include <assert.h>
+
 #include "vector.h"
 
 void checkingForSize(vector *v) {

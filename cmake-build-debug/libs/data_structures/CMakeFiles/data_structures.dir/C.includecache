@@ -7,12 +7,12 @@
 #IncludeRegexTransform: 
 
 C:/course/libs/data_structures/vector/vector.c
-assert.h
--
 vector.h
 C:/course/libs/data_structures/vector/vector.h
 
 C:/course/libs/data_structures/vector/vector.h
+assert.h
+-
 stdbool.h
 -
 stddef.h
