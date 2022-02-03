@@ -17,8 +17,6 @@ stdint.h
 -
 c:/course/libs/data_structures/vector/vector.h
 -
-c:/course/libs/data_structures/vector/vectorVoid.h
--
 
 c:/course/libs/data_structures/vector/vector.h
 assert.h
@@ -32,23 +30,5 @@ stdio.h
 malloc.h
 -
 stdlib.h
--
-
-c:/course/libs/data_structures/vector/vectorVoid.h
-limits.h
--
-assert.h
--
-stdbool.h
--
-stddef.h
--
-stdio.h
--
-malloc.h
--
-stdlib.h
--
-string.h
 -
 

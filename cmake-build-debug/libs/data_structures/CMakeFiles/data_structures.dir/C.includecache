@@ -6,24 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/course/libs/data_structures/vector/vector.c
-vector.h
-C:/course/libs/data_structures/vector/vector.h
-
-C:/course/libs/data_structures/vector/vector.h
-assert.h
--
-stdbool.h
--
-stddef.h
--
-stdio.h
--
-malloc.h
--
-stdlib.h
--
-
 C:/course/libs/data_structures/vector/vectorVoid.c
 vectorVoid.h
 C:/course/libs/data_structures/vector/vectorVoid.h

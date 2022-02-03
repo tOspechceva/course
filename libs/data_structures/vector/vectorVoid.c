@@ -12,7 +12,7 @@ void checkingForSize(vectorVoid *v) {
 }
 
 vectorVoid createVectorV(size_t n, size_t baseTypeSize) {
-    vectorVoid v = {malloc(baseTypeSize * n), 0, n, baseTypeSize};
+    vectorVoid v = {(int*)malloc(baseTypeSize * n), 0, n, baseTypeSize};
     checkingForSize(&v);
 
     return v;
@@ -62,7 +62,8 @@ void setVectorValueV(vectorVoid *v, size_t index, void *source){
         fprintf(stderr, "bad vector");
         exit(1);
     }
-    memcpy(&v->data[index], source, v->baseTypeSize);
+    char *destination = (char *) v->data + index * v->baseTypeSize;
+    memcpy(destination, source, v->baseTypeSize);
 }
 
 void popBackV(vectorVoid *v){

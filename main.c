@@ -4,7 +4,8 @@
 # include <stdint.h >
 
 # include "c:/course/libs/data_structures/vector/vector.h"
-# include "c:/course/libs/data_structures/vector/vectorVoid.h"
+
+
 void test_pushBack_emptyVector() {
     vector v = createVector(3);
     pushBack(&v, 9);
@@ -166,9 +167,13 @@ void test() {
     test_back();
 }
 
-main() {
-    test();
 
-    vectorVoid v;
+
+
+main() {
+    //test();
+
+
+
     return 0;
 }
