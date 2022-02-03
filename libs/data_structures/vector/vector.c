@@ -33,7 +33,7 @@ void clear(vector *v) {
 }
 
 void shrinkToFit(vector *v) {
-    v->capacity = v->size;
+    reserve(v,v->size);
 }
 
 void deleteVector(vector *v) {
@@ -74,7 +74,7 @@ void popBack(vector *v) {
 int *atVector(vector *v, size_t index) {
     if (index >= v->capacity) {
         fprintf(stderr, "IndexError: a[ %d ] is not exists", index);
-    } else if (v->capacity == 0 && index < 0) {
+    } else if (v->capacity == 0 || index < 0) {
         fprintf(stderr, "bad vector");
         exit(1);
     }
@@ -82,9 +82,9 @@ int *atVector(vector *v, size_t index) {
 }
 
 int *back(vector *v) {
-    return atVector(v, v->capacity - 1);
+    return atVector(v, v->capacity -1 );
 }
 
 int *front(vector *v) {
-    return atVector(v, v->size - 1);
+    return atVector(v, v->size -1);
 }

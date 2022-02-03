@@ -7,3 +7,6 @@ libs/data_structures/CMakeFiles/data_structures.dir/bitset/bitset.c.obj: \
 libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj: \
  ../libs/data_structures/vector/vector.c \
  ../libs/data_structures/vector/vector.h
+libs/data_structures/CMakeFiles/data_structures.dir/vector/vectorVoid.c.obj: \
+ ../libs/data_structures/vector/vectorVoid.c \
+ ../libs/data_structures/vector/vectorVoid.h

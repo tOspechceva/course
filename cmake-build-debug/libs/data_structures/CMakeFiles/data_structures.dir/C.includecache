@@ -24,3 +24,25 @@ malloc.h
 stdlib.h
 -
 
+C:/course/libs/data_structures/vector/vectorVoid.c
+vectorVoid.h
+C:/course/libs/data_structures/vector/vectorVoid.h
+
+C:/course/libs/data_structures/vector/vectorVoid.h
+limits.h
+-
+assert.h
+-
+stdbool.h
+-
+stddef.h
+-
+stdio.h
+-
+malloc.h
+-
+stdlib.h
+-
+string.h
+-
+

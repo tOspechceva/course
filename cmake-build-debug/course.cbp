@@ -170,6 +170,12 @@
 		<Unit filename="C:/course/libs/data_structures/bitset/bitset.h">
 			<Option target="data_structures"/>
 		</Unit>
+		<Unit filename="C:/course/libs/data_structures/matrix/matrix.c">
+			<Option target="data_structures"/>
+		</Unit>
+		<Unit filename="C:/course/libs/data_structures/matrix/matrix.h">
+			<Option target="data_structures"/>
+		</Unit>
 		<Unit filename="C:/course/libs/data_structures/vector/vector.c">
 			<Option target="data_structures"/>
 		</Unit>
