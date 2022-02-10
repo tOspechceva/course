@@ -6,19 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/course/main.c
-assert.h
--
-stdbool.h
--
-stdio.h 
--
-stdint.h 
--
-c:/course/libs/data_structures/vector/vector.h
--
-
-c:/course/libs/data_structures/vector/vector.h
+C:/course/libs/data_structures/matrix/matrix.h
 assert.h
 -
 stdbool.h
@@ -31,4 +19,16 @@ malloc.h
 -
 stdlib.h
 -
+
+C:/course/main.c
+assert.h
+-
+stdbool.h
+-
+stdio.h 
+-
+stdint.h 
+-
+libs/data_structures/matrix/matrix.h
+C:/course/libs/data_structures/matrix/matrix.h
 

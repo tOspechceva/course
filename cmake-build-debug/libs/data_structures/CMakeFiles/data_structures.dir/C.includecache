@@ -6,13 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/course/libs/data_structures/vector/vectorVoid.c
-vectorVoid.h
-C:/course/libs/data_structures/vector/vectorVoid.h
+C:/course/libs/data_structures/matrix/matrix.c
+matrix.h
+C:/course/libs/data_structures/matrix/matrix.h
 
-C:/course/libs/data_structures/vector/vectorVoid.h
-limits.h
--
+C:/course/libs/data_structures/matrix/matrix.h
 assert.h
 -
 stdbool.h
@@ -24,7 +22,5 @@ stdio.h
 malloc.h
 -
 stdlib.h
--
-string.h
 -
 
