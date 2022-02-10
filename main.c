@@ -20,13 +20,18 @@ void test(){
 
 int main() {
     //test();
-    matrix ms[3] = {
-            createMatrix(2, 2),
-            createMatrix(1, 1),
-            createMatrix(1, 1),
+    //matrix ms[3] = {
+    //        createMatrix(2, 2),
+    //        createMatrix(1, 1),
+    //        createMatrix(1, 1),
+//
+    //};
+    //inputMatrices(ms,3);
+    //outputMatrices(ms,3);
+    matrix m= createMatrix(3,3);
 
-    };
-    inputMatrices(ms,3);
-    outputMatrices(ms,3);
+    inputMatrix(&m);
+    swapColumns(m,1 ,2);
+    outputMatrix(m);
     return 0;
 }
