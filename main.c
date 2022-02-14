@@ -335,15 +335,39 @@ void test_functions() {
     test_insertionSortColsMatrixByColCriteria();
 }
 
-void swapMinAndMaxRows(matrix m){
-    position min= getMinValuePos(m);
-    position max= getMaxValuePos(m);
-    swapRows(m,min.rowIndex,max.rowIndex);
+void swapMinAndMaxRows(matrix m) {
+    position min = getMinValuePos(m);
+    position max = getMaxValuePos(m);
+    swapRows(m, min.rowIndex, max.rowIndex);
 }
 
+int getMax(int *a, int n) {
+    int max = a[0];
+    for (int i = 1; i < n; ++i) {
+        if (a[i] > max)
+            max = a[i];
+    }
+    return max;
+}
 
+void sortRowsByMinElement(matrix m) {
+    insertionSortRowsMatrixByRowCriteria(m, getMax);
+}
 
-void test_swapMinAndMaxRows(){
+void test_sortRowsByMinElement() {
+    matrix m = createMatrixFromArray(
+            (int[]) {7, 1, 2,
+                     1, 8, 1,
+                     3, 2, 3
+            },
+            3, 3
+    );
+    sortRowsByMinElement(m);
+    assert(m.values[1][0] == 7);
+    assert(m.values[2][1] == 8);
+}
+
+void test_swapMinAndMaxRows() {
     matrix m = createMatrixFromArray(
             (int[]) {6, 5, 4,
                      9, 8, 7,
@@ -355,18 +379,15 @@ void test_swapMinAndMaxRows(){
     assert(m.values[1][0] == 3);
     assert(m.values[2][1] == 8);
 }
+
 void test_tasks() {
     test_swapMinAndMaxRows();
+    test_sortRowsByMinElement();
 }
 
 int main() {
     //test_functions();
     test_tasks();
-
-
-
-
-
 
     //matrix ms[3] = {
     //        createMatrix(2, 2),
