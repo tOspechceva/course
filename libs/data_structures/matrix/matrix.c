@@ -132,3 +132,62 @@ bool isSymmetricMatrix(matrix m){
     return false;
 }
 
+void transposeSquareMatrix(matrix m){
+    assert(isSquareMatrix(m));
+    int i=0;
+    int j=0;
+    while (i<m.nRows && j<m.nCols){
+        while (i!=j){
+            int t=m.values[i][j];
+            m.values[i][j]=m.values[j][i];
+            m.values[j][i]=t;
+            i++;
+        }
+        i=0;
+        j++;
+    }
+}
+
+
+
+position getMinValuePos(matrix m){
+    int i=0;
+    int j=0;
+    int copyMin=m.values[i][j];
+    position p={i,j};
+    while (i<m.nRows){
+        while (j<m.nCols){
+            if (m.values[i][j]<copyMin){
+                copyMin=m.values[i][j];
+                p.colIndex=j;
+                p.rowIndex=i;
+            }
+            j++;
+        }
+        j=0;
+        i++;
+    }
+
+    return p;
+}
+
+position getMaxValuePos(matrix m) {
+    int i=0;
+    int j=0;
+    int copyMax=m.values[i][j];
+    position p={i,j};
+    while (i<m.nRows){
+        while (j<m.nCols){
+            if (m.values[i][j] > copyMax){
+                copyMax=m.values[i][j];
+                p.colIndex=j;
+                p.rowIndex=i;
+            }
+            j++;
+        }
+        j=0;
+        i++;
+    }
+
+    return p;
+}

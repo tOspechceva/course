@@ -28,15 +28,17 @@ int main() {
     //};
     //inputMatrices(ms,3);
     //outputMatrices(ms,3);
-    matrix m1= createMatrix(3,3);
+    matrix m1= createMatrix(3,2);
     //matrix m2= createMatrix(2,3);
     inputMatrix(&m1);
     //inputMatrix(&m2);
-    if (isSymmetricMatrix(m1))
-        printf("Yes");
-    else
-        printf("No");
-    outputMatrix(m1);
+    //if (isSymmetricMatrix(m1))
+    //    printf("Yes");
+    //else
+    //    printf("No");
+    position p=getMaxValuePos(m1);
+    printf("%d %d %d", p.rowIndex, p.colIndex, m1.values[p.rowIndex][p.colIndex]);
+    //outputMatrix(m1);
     //outputMatrix(m2);
     return 0;
 }
