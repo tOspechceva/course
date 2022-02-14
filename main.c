@@ -312,7 +312,7 @@ void test_insertionSortColsMatrixByColCriteria() {
 
 }
 
-void test() {
+void test_functions() {
     test_swapRows();
     test_swapRows_firstLines();
     test_swapRows_lastLines();
@@ -335,8 +335,39 @@ void test() {
     test_insertionSortColsMatrixByColCriteria();
 }
 
+void swapMinAndMaxRows(matrix m){
+    position min= getMinValuePos(m);
+    position max= getMaxValuePos(m);
+    swapRows(m,min.rowIndex,max.rowIndex);
+}
+
+
+
+void test_swapMinAndMaxRows(){
+    matrix m = createMatrixFromArray(
+            (int[]) {6, 5, 4,
+                     9, 8, 7,
+                     3, 2, 1
+            },
+            3, 3
+    );
+    swapMinAndMaxRows(m);
+    assert(m.values[1][0] == 3);
+    assert(m.values[2][1] == 8);
+}
+void test_tasks() {
+    test_swapMinAndMaxRows();
+}
+
 int main() {
-    test();
+    //test_functions();
+    test_tasks();
+
+
+
+
+
+
     //matrix ms[3] = {
     //        createMatrix(2, 2),
     //        createMatrix(1, 1),
