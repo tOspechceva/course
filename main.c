@@ -28,10 +28,15 @@ int main() {
     //};
     //inputMatrices(ms,3);
     //outputMatrices(ms,3);
-    matrix m= createMatrix(3,3);
-
-    inputMatrix(&m);
-    swapColumns(m,1 ,2);
-    outputMatrix(m);
+    matrix m1= createMatrix(3,3);
+    //matrix m2= createMatrix(2,3);
+    inputMatrix(&m1);
+    //inputMatrix(&m2);
+    if (isSymmetricMatrix(m1))
+        printf("Yes");
+    else
+        printf("No");
+    outputMatrix(m1);
+    //outputMatrix(m2);
     return 0;
 }
