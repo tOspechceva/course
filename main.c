@@ -354,6 +354,32 @@ void sortRowsByMinElement(matrix m) {
     insertionSortRowsMatrixByRowCriteria(m, getMax);
 }
 
+int getMin(int *a, int n){
+    int min = a[0];
+    for (int i = 1; i < n; ++i) {
+        if (a[i] < min)
+            min = a[i];
+    }
+    return min;
+}
+
+void sortColsByMinElement(matrix m){
+    insertionSortColsMatrixByColCriteria(m,getMin);
+}
+
+void test_sortColsByMinElement(){
+    matrix m = createMatrixFromArray(
+            (int[]) {3,5,2,4,3,3,
+                     2,5,1,8,2,7,
+                     6,1,4,4,8,3
+            },
+            3, 6
+    );
+    sortColsByMinElement(m);
+    assert(m.values[1][0] == 5);
+    assert(m.values[2][1] == 4);
+    assert(m.values[2][5] == 4);
+}
 void test_sortRowsByMinElement() {
     matrix m = createMatrixFromArray(
             (int[]) {7, 1, 2,
@@ -383,11 +409,13 @@ void test_swapMinAndMaxRows() {
 void test_tasks() {
     test_swapMinAndMaxRows();
     test_sortRowsByMinElement();
+    test_sortColsByMinElement();
 }
 
 int main() {
     //test_functions();
     test_tasks();
+
 
     //matrix ms[3] = {
     //        createMatrix(2, 2),
