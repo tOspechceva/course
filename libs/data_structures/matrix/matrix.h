@@ -84,4 +84,20 @@ position getMinValuePos(matrix m);
 // возвращает позицию максимального элемента матрицы m.
 position getMaxValuePos(matrix m);
 
+//выполняет сортировку вставками строк
+//матрицы m по неубыванию значения функции criteria применяемой для строк.
+void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int));
+
+
+//выполняет сортировку вставками столбцов матрицы m по неубыванию значения функции criteria применяемой для столбцов.
+void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int));
+
+//возвращает матрицу, размера nRows на nCols, построенного из элементов массива a, размещенную в динамической
+//памяти:
+matrix createMatrixFromArray(const int *a, int nRows, int nCols);
+
+//возвращает указатель на нулевую матрицу массива из nMatrices матриц, размещенных
+//в динамической памяти, построенных из элементов массива a.
+matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t nRows, size_t nCols);
+
 #endif //COURSE_MATRIX_H
