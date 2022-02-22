@@ -37,6 +37,8 @@ malloc.h
 -
 stdlib.h
 -
+math.h
+-
 ../matrix.h
 C:/course/libs/data_structures/matrix/matrix.h
 

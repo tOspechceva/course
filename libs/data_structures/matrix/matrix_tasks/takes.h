@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "../matrix.h"
 
@@ -40,5 +41,6 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
 int getMinInArea(matrix m);
 
+void sortByDistances(matrix m);
 
 #endif //COURSE_TAKES_H

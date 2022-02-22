@@ -154,3 +154,41 @@ int getMinInArea(matrix m) {
 
     return min;
 }
+float getDistance(int *a, int n){
+    int sum=0;
+    for (int i = 0; i < n; ++i) {
+        sum+=a[i]*a[i];
+    }
+    return sqrt(sum);
+}
+
+void createArray(int *a, matrix m, int rows, const int cols) {
+    for (int i = 0; i < rows; i++) {
+        a[i] = m.values[i][cols];
+    }
+}
+void swapArray(int *m, int a, int b) {
+    int t = m[a];
+    m[a] = m[b];
+    m[b] = t;
+}
+void insertionSortRowsMatrixByRowCriteriaF(matrix m,float (*criteria)(int *, int)){
+    float a[m.nCols];
+    float b[m.nRows];
+    for (int i = 0; i < m.nCols; i++) {
+        createArray(b, m, m.nRows, i);
+        a[i] = criteria(b, m.nRows);
+        for (int j = 0; j < i; j++) {
+            if (a[j] > a[i]) {
+                for (int k = i; k > j; k--) {
+                    swapArray(a, k - 1, k);
+                    swapColumns(m, k - 1, k);
+                }
+            }
+        }
+    }
+}
+
+void sortByDistances(matrix m){
+    insertionSortRowsMatrixByRowCriteriaF(m,getDistance);
+}

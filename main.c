@@ -464,6 +464,20 @@ void test_getMinInArea() {
     assert(getMinInArea(m) == 5);
     freeMemMatrix(m);
 }
+void test_sortByDistances() {
+    matrix m = createMatrixFromArray(
+            (int[]) {9, 8, 7,
+                     6, 5, 4,
+                     3, 2, 1
+            },
+            3, 3
+    );
+    sortByDistances(m);
+
+    assert(m.values[0][0] == 3);
+    assert(m.values[2][0] == 9);
+    freeMemMatrix(m);
+}
 
 void test_tasks() {
     test_getSquareOfMatrixIfSymmetric();
