@@ -3,6 +3,7 @@
 //
 
 #include "takes.h"
+
 void swapMinAndMaxRows(matrix m) {
     position min = getMinValuePos(m);
     position max = getMaxValuePos(m);

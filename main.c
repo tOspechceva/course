@@ -348,6 +348,7 @@ void test_swapMinAndMaxRows() {
     swapMinAndMaxRows(m);
     assert(m.values[1][0] == 3);
     assert(m.values[2][1] == 8);
+    freeMemMatrix(m);
 }
 
 
@@ -363,6 +364,7 @@ void test_sortColsByMinElement() {
     assert(m.values[1][0] == 5);
     assert(m.values[2][1] == 4);
     assert(m.values[2][5] == 4);
+    freeMemMatrix(m);
 }
 
 void test_getSquareOfMatrixIfSymmetric() {
@@ -375,6 +377,7 @@ void test_getSquareOfMatrixIfSymmetric() {
     );
     getSquareOfMatrixIfSymmetric(&m);
     assert(m.values[1][0] == 147);
+    freeMemMatrix(m);
 }
 
 void test_sortRowsByMinElement() {
@@ -388,14 +391,51 @@ void test_sortRowsByMinElement() {
     sortRowsByMinElement(m);
     assert(m.values[1][0] == 7);
     assert(m.values[2][1] == 8);
+    freeMemMatrix(m);
 }
 
+void test_transposeIfMatrixHasNotEqualSumOfRows() {
+    matrix m = createMatrixFromArray(
+            (int[]) {1, 2, 3,
+                     4, 5, 6,
+                     7, 8, 9,
+
+            },
+            3, 3
+    );
+    transposeIfMatrixHasNotEqualSumOfRows(m);
+    assert(m.values[1][0] == 2);
+    assert(m.values[0][2] == 7);
+    assert(m.values[2][1] == 6);
+    freeMemMatrix(m);
+}
+
+void test_isMutuallyInverseMatrices() {
+    matrix m1 = createMatrixFromArray(
+            (int[]) {2, 1, -1,
+                     5, 2, 4,
+                     7, 3, 2
+            },
+            3, 3
+    );
+    matrix m2 = createMatrixFromArray(
+            (int[]) {-8, -5, 6,
+                     18, 11, -13,
+                     1, 1, -1
+            },
+            3, 3
+    );
+    assert(isMutuallyInverseMatrices(m1, m2));
+    freeMemMatrix(m1);
+    freeMemMatrix(m2);
+}
 
 void test_tasks() {
     test_getSquareOfMatrixIfSymmetric();
     test_sortColsByMinElement();
     test_swapMinAndMaxRows();
     test_sortRowsByMinElement();
+    test_isMutuallyInverseMatrices();
 
 }
 
