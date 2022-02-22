@@ -91,3 +91,37 @@ bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
 
     return isEMatrix(m);
 }
+
+int max_(int a, int b) {
+    return a < b ? b : a;
+}
+
+long long sumArray(int *a, size_t size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += a[i];
+    }
+    return sum;
+}
+
+long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
+    int arraySize = m.nRows + m.nCols - 2;
+    int max[arraySize];
+    int i = 0;
+    for (int j = 1; j < m.nRows; ++j) {
+        max[i] = m.values[j][0];
+        for (int k = j, x = 0; k < m.nRows && x < m.nCols; ++k, ++x) {
+            max[i] = max_(max[i], m.values[k][x]);
+        }
+        i++;
+    }
+    for (int j = 1; j < m.nCols; ++j) {
+        max[i] = m.values[0][j];
+        for (int k = 0, x = j; k < m.nRows && x < m.nCols; ++k, ++x) {
+            max[i] = max_(max[i], m.values[k][x]);
+        }
+        i++;
+    }
+
+    return sumArray(max, arraySize);
+}
