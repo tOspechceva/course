@@ -232,3 +232,43 @@ int countEqClassesByRowsSum(matrix m) {
     }
     return countNUnique(a, m.nRows);
 }
+
+void matrixColumnsInArray(matrix m, int *a, int cols) {
+    for (int i = 0; i < m.nRows; ++i) {
+        a[i] = m.values[i][cols];
+    }
+}
+
+int maxArray_(int *a, size_t n, int *position) {
+    int max = a[0];
+    for (int i = 1; i < n; ++i) {
+        if (a[i] > max) {
+            max = a[i];
+            *position = i;
+        }
+    }
+    return max;
+}
+
+long long sumArray_(int *a, size_t size, int positionMaxRows) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        if (i != positionMaxRows)
+            sum += a[i];
+    }
+    return sum;
+}
+
+int getNSpecialElement(matrix m) {
+    int a[m.nRows];
+    int positionMaxRows;
+    int countSpecialElement = 0;
+    for (int i = 0; i < m.nCols; ++i) {
+        matrixColumnsInArray(m, a, i);
+        int max = maxArray_(a, m.nRows, &positionMaxRows);
+        long long sum = sumArray_(a, m.nRows, positionMaxRows);
+        if (max > sum)
+            countSpecialElement++;
+    }
+    return countSpecialElement;
+}

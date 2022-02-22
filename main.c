@@ -477,7 +477,20 @@ void test_countEqClassesByRowsSum() {
             },
             6, 2
     );
-    assert(countEqClassesByRowsSum(m)==3);
+    assert(countEqClassesByRowsSum(m) == 3);
+    freeMemMatrix(m);
+}
+
+void test_getNSpecialElement() {
+    matrix m = createMatrixFromArray(
+            (int[]) {3, 5, 5, 4,
+                     2, 3, 6, 7,
+                     12, 2, 1, 2
+            },
+            3, 4
+    );
+    assert(getNSpecialElement(m) == 2);
+    freeMemMatrix(m);
 }
 
 void test_tasks() {
@@ -490,6 +503,7 @@ void test_tasks() {
     test_findSumOfMaxesOfPseudoDiagonal2();
     test_getMinInArea();
     test_countEqClassesByRowsSum();
+    test_getNSpecialElement();
 }
 
 

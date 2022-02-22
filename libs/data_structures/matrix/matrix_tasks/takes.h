@@ -45,4 +45,7 @@ void sortByDistances(matrix m);
 
 int countEqClassesByRowsSum(matrix m);
 
+int getNSpecialElement(matrix m);
+
+
 #endif //COURSE_TAKES_H
