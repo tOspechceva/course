@@ -154,41 +154,81 @@ int getMinInArea(matrix m) {
 
     return min;
 }
-float getDistance(int *a, int n){
-    int sum=0;
-    for (int i = 0; i < n; ++i) {
-        sum+=a[i]*a[i];
-    }
-    return sqrt(sum);
-}
+//float getDistance(int *a, int n){
+//    int sum=0;
+//    for (int i = 0; i < n; ++i) {
+//        sum+=a[i]*a[i];
+//    }
+//    return sqrt(sum);
+//}
+//
+//void createArray(int *a, matrix m, int rows, const int cols) {
+//    for (int i = 0; i < rows; i++) {
+//        a[i] = m.values[i][cols];
+//    }
+//}
+//void swapArray(int *m, int a, int b) {
+//    int t = m[a];
+//    m[a] = m[b];
+//    m[b] = t;
+//}
+//void insertionSortRowsMatrixByRowCriteriaF(matrix m,float (*criteria)(int *, int)){
+//    float a[m.nCols];
+//    float b[m.nRows];
+//    for (int i = 0; i < m.nCols; i++) {
+//        createArray(b, m, m.nRows, i);
+//        a[i] = criteria(b, m.nRows);
+//        for (int j = 0; j < i; j++) {
+//            if (a[j] > a[i]) {
+//                for (int k = i; k > j; k--) {
+//                    swapArray(a, k - 1, k);
+//                    swapColumns(m, k - 1, k);
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//void sortByDistances(matrix m){
+//    insertionSortRowsMatrixByRowCriteriaF(m,getDistance);
+//}
 
-void createArray(int *a, matrix m, int rows, const int cols) {
-    for (int i = 0; i < rows; i++) {
-        a[i] = m.values[i][cols];
-    }
-}
-void swapArray(int *m, int a, int b) {
-    int t = m[a];
-    m[a] = m[b];
-    m[b] = t;
-}
-void insertionSortRowsMatrixByRowCriteriaF(matrix m,float (*criteria)(int *, int)){
-    float a[m.nCols];
-    float b[m.nRows];
-    for (int i = 0; i < m.nCols; i++) {
-        createArray(b, m, m.nRows, i);
-        a[i] = criteria(b, m.nRows);
-        for (int j = 0; j < i; j++) {
-            if (a[j] > a[i]) {
-                for (int k = i; k > j; k--) {
-                    swapArray(a, k - 1, k);
-                    swapColumns(m, k - 1, k);
+void selectionSort(int *a, const size_t n) {
+    if (n > 1) {
+        for (int k = 0; k < n; k++) {
+            int min = a[k];
+            int count = k;
+            for (int i = k; i < n; i++) {
+                if (a[i] < min) {
+                    min = a[i];
+                    count = i;
                 }
             }
+            a[count] = a[k];
+            a[k] = min;
         }
     }
 }
 
-void sortByDistances(matrix m){
-    insertionSortRowsMatrixByRowCriteriaF(m,getDistance);
+int countNUnique(int *a, int n) {
+    selectionSort(a, n);
+    int count = 1;
+    for (int i = 0; i < n - 1; i++) {
+        if (a[i] != a[i + 1])
+            count++;
+    }
+    return count;
+}
+
+int countEqClassesByRowsSum(matrix m) {
+    long long a[m.nRows];
+    for (int i = 0; i < m.nRows; ++i) {
+        a[i] = 0;
+    }
+    for (int i = 0; i < m.nRows; i++) {
+        for (int j = 0; j < m.nCols; j++) {
+            a[i] += m.values[i][j];
+        }
+    }
+    return countNUnique(a, m.nRows);
 }

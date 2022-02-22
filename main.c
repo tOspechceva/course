@@ -464,19 +464,20 @@ void test_getMinInArea() {
     assert(getMinInArea(m) == 5);
     freeMemMatrix(m);
 }
-void test_sortByDistances() {
-    matrix m = createMatrixFromArray(
-            (int[]) {9, 8, 7,
-                     6, 5, 4,
-                     3, 2, 1
-            },
-            3, 3
-    );
-    sortByDistances(m);
 
-    assert(m.values[0][0] == 3);
-    assert(m.values[2][0] == 9);
-    freeMemMatrix(m);
+void test_countEqClassesByRowsSum() {
+    matrix m = createMatrixFromArray(
+            (int[]) {2, 7,
+                     7, 1,
+                     5, 4,
+                     4, 3,
+                     1, 6,
+                     0, 8
+
+            },
+            6, 2
+    );
+    assert(countEqClassesByRowsSum(m)==3);
 }
 
 void test_tasks() {
@@ -488,6 +489,7 @@ void test_tasks() {
     test_findSumOfMaxesOfPseudoDiagonal();
     test_findSumOfMaxesOfPseudoDiagonal2();
     test_getMinInArea();
+    test_countEqClassesByRowsSum();
 }
 
 

@@ -43,4 +43,6 @@ int getMinInArea(matrix m);
 
 void sortByDistances(matrix m);
 
+int countEqClassesByRowsSum(matrix m);
+
 #endif //COURSE_TAKES_H
