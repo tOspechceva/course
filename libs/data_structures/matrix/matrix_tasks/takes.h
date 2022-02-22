@@ -51,4 +51,6 @@ void swapPenultimateRow(matrix m);
 
 int countNonDescendingRowsMatrices(matrix *ms, int nMatrix);
 
+void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix);
+
 #endif //COURSE_TAKES_H
