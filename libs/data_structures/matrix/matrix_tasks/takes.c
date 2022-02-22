@@ -272,3 +272,25 @@ int getNSpecialElement(matrix m) {
     }
     return countSpecialElement;
 }
+
+position getLeftMin(matrix m) {
+    position pMin = {0, 0};
+    int min = m.values[0][0];
+    for (int i = 0; i < m.nRows; ++i) {
+        for (int j = 0; j < m.nCols; ++j) {
+            if (min > m.values[i][j]) {
+                min = m.values[i][j];
+                pMin.rowIndex = i;
+                pMin.colIndex = j;
+            }
+        }
+    }
+    return pMin;
+}
+
+void swapPenultimateRow(matrix m) {
+    position pMin = getLeftMin(m);
+    for (int i = m.nCols - 1; i >= 0; --i) {
+        m.values[m.nRows - 2][i] = m.values[i][pMin.colIndex];
+    }
+}

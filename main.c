@@ -492,7 +492,32 @@ void test_getNSpecialElement() {
     assert(getNSpecialElement(m) == 2);
     freeMemMatrix(m);
 }
-
+void test_swapPenultimateRow(){
+    matrix m = createMatrixFromArray(
+            (int[]) {1,2,3,
+                     4,5,6,
+                     7,8,1
+            },
+            3, 3
+    );
+    swapPenultimateRow(m);
+    assert(m.values[1][0]==1);
+    assert(m.values[1][1]==4);
+    assert(m.values[1][2]==7);
+    freeMemMatrix(m);
+}
+void test_swapPenultimateRow2(){
+    matrix m = createMatrixFromArray(
+            (int[]) {1,2,
+                     3,4
+            },
+            2,2
+    );
+    swapPenultimateRow(m);
+    assert(m.values[0][0]==1);
+    assert(m.values[0][1]==3);
+    freeMemMatrix(m);
+}
 void test_tasks() {
     test_getSquareOfMatrixIfSymmetric();
     test_sortColsByMinElement();
@@ -504,6 +529,8 @@ void test_tasks() {
     test_getMinInArea();
     test_countEqClassesByRowsSum();
     test_getNSpecialElement();
+    test_swapPenultimateRow();
+    test_swapPenultimateRow2();
 }
 
 
