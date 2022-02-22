@@ -49,4 +49,6 @@ int getNSpecialElement(matrix m);
 
 void swapPenultimateRow(matrix m);
 
+int countNonDescendingRowsMatrices(matrix *ms, int nMatrix);
+
 #endif //COURSE_TAKES_H

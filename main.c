@@ -492,32 +492,63 @@ void test_getNSpecialElement() {
     assert(getNSpecialElement(m) == 2);
     freeMemMatrix(m);
 }
-void test_swapPenultimateRow(){
+
+void test_swapPenultimateRow() {
     matrix m = createMatrixFromArray(
-            (int[]) {1,2,3,
-                     4,5,6,
-                     7,8,1
+            (int[]) {1, 2, 3,
+                     4, 5, 6,
+                     7, 8, 1
             },
             3, 3
     );
     swapPenultimateRow(m);
-    assert(m.values[1][0]==1);
-    assert(m.values[1][1]==4);
-    assert(m.values[1][2]==7);
+    assert(m.values[1][0] == 1);
+    assert(m.values[1][1] == 4);
+    assert(m.values[1][2] == 7);
     freeMemMatrix(m);
 }
-void test_swapPenultimateRow2(){
+
+void test_swapPenultimateRow2() {
     matrix m = createMatrixFromArray(
-            (int[]) {1,2,
-                     3,4
+            (int[]) {1, 2,
+                     3, 4
             },
-            2,2
+            2, 2
     );
     swapPenultimateRow(m);
-    assert(m.values[0][0]==1);
-    assert(m.values[0][1]==3);
+    assert(m.values[0][0] == 1);
+    assert(m.values[0][1] == 3);
     freeMemMatrix(m);
 }
+
+void test_countNonDescendingRowsMatrices() {
+    matrix ms[4] = {
+            createMatrixFromArray(
+                    (int[])
+                            {7, 1,
+                             1, 1
+                            },
+                    2, 2),
+            createMatrixFromArray(
+                    (int[]) {1, 6,
+                             2, 2
+                    },
+                    2, 2),
+            createMatrixFromArray(
+                    (int[]) {5, 4,
+                             2, 3
+                    },
+                    2, 2),
+            createMatrixFromArray(
+                    (int[]) {1, 3,
+                             7, 9
+                    },
+                    2, 2)
+    };
+    assert(countNonDescendingRowsMatrices(ms, 4) == 2);
+    freeMemMatrices(ms, 4);
+}
+
 void test_tasks() {
     test_getSquareOfMatrixIfSymmetric();
     test_sortColsByMinElement();
@@ -531,6 +562,7 @@ void test_tasks() {
     test_getNSpecialElement();
     test_swapPenultimateRow();
     test_swapPenultimateRow2();
+    test_countNonDescendingRowsMatrices();
 }
 
 
@@ -539,12 +571,11 @@ int main() {
     test_tasks();
 
 
-    //matrix ms[3] = {
-    //        createMatrix(2, 2),
-    //        createMatrix(1, 1),
-    //        createMatrix(1, 1),
-//
-    //};
+    // matrix ms[3] = {
+    //         createMatrix(2, 2),
+    //         createMatrix(1, 1),
+    //         createMatrix(1, 1),
+    // };
     //inputMatrices(ms,3);
     //outputMatrices(ms,3);
 
