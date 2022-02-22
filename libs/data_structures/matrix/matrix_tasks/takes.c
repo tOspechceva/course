@@ -330,10 +330,11 @@ void printMatrixWithMinMax(matrix *ms, int nMatrix) {
             outputMatrix(ms[i]);
     }
 }
-float getDistance(int *a, int n){
-    int sum=0;
+
+float getDistance(int *a, int n) {
+    int sum = 0;
     for (int i = 0; i < n; ++i) {
-        sum+=a[i]*a[i];
+        sum += a[i] * a[i];
     }
     return sqrt(sum);
 }
@@ -352,7 +353,7 @@ void universalSwap(void *a, void *b, size_t size) {
 }
 
 void insertionSortRowsMatrixByRowCriteriaFloat(matrix m, float (*criteria)(int *, int)) {
-    float *rows = (float *) malloc(sizeof(float ) * m.nRows);
+    float *rows = (float *) malloc(sizeof(float) * m.nRows);
     for (int rIndex = 0; rIndex < m.nRows; ++rIndex)
         rows[rIndex] = criteria(m.values[rIndex], m.nCols);
 
