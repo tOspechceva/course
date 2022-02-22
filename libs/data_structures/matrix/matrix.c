@@ -111,9 +111,17 @@ bool twoMatricesEqual(matrix m1, matrix m2) {
 }
 
 bool isEMatrix(matrix m) {
-    if (m.nRows == 1 && m.nCols == 1)
-        return true;
-    return false;
+    if (!isSquareMatrix(m))
+        return false;
+
+    for (int rIndex = 0; rIndex < m.nRows; rIndex++) {
+        for (int cIndex = 0; cIndex < m.nCols; ++cIndex) {
+            if (rIndex == cIndex && m.values[rIndex][cIndex] != 1
+                || rIndex != cIndex && m.values[rIndex][cIndex] != 0)
+                return false;
+        }
+    }
+    return true;
 }
 
 bool isSymmetricMatrix(matrix m) {

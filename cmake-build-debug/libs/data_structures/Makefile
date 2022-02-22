@@ -177,6 +177,30 @@ matrix/matrix.c.s:
 	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.s
 .PHONY : matrix/matrix.c.s
 
+matrix/matrix_tasks/takes.obj: matrix/matrix_tasks/takes.c.obj
+.PHONY : matrix/matrix_tasks/takes.obj
+
+# target to build an object file
+matrix/matrix_tasks/takes.c.obj:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix_tasks/takes.c.obj
+.PHONY : matrix/matrix_tasks/takes.c.obj
+
+matrix/matrix_tasks/takes.i: matrix/matrix_tasks/takes.c.i
+.PHONY : matrix/matrix_tasks/takes.i
+
+# target to preprocess a source file
+matrix/matrix_tasks/takes.c.i:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix_tasks/takes.c.i
+.PHONY : matrix/matrix_tasks/takes.c.i
+
+matrix/matrix_tasks/takes.s: matrix/matrix_tasks/takes.c.s
+.PHONY : matrix/matrix_tasks/takes.s
+
+# target to generate assembly for a file
+matrix/matrix_tasks/takes.c.s:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix_tasks/takes.c.s
+.PHONY : matrix/matrix_tasks/takes.c.s
+
 vector/vector.obj: vector/vector.c.obj
 .PHONY : vector/vector.obj
 
@@ -240,6 +264,9 @@ help:
 	@echo ... matrix/matrix.obj
 	@echo ... matrix/matrix.i
 	@echo ... matrix/matrix.s
+	@echo ... matrix/matrix_tasks/takes.obj
+	@echo ... matrix/matrix_tasks/takes.i
+	@echo ... matrix/matrix_tasks/takes.s
 	@echo ... vector/vector.obj
 	@echo ... vector/vector.i
 	@echo ... vector/vector.s

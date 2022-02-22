@@ -4,6 +4,8 @@
 # include <stdint.h >
 
 # include "libs/data_structures/matrix/matrix.h"
+# include "libs/data_structures/matrix/matrix_tasks/takes.h"
+
 
 void test_swapRows_firstLines() {
     matrix m = createMatrixFromArray(
@@ -335,64 +337,6 @@ void test_functions() {
     test_insertionSortColsMatrixByColCriteria();
 }
 
-void swapMinAndMaxRows(matrix m) {
-    position min = getMinValuePos(m);
-    position max = getMaxValuePos(m);
-    swapRows(m, min.rowIndex, max.rowIndex);
-}
-
-int getMax(int *a, int n) {
-    int max = a[0];
-    for (int i = 1; i < n; ++i) {
-        if (a[i] > max)
-            max = a[i];
-    }
-    return max;
-}
-
-void sortRowsByMinElement(matrix m) {
-    insertionSortRowsMatrixByRowCriteria(m, getMax);
-}
-
-int getMin(int *a, int n){
-    int min = a[0];
-    for (int i = 1; i < n; ++i) {
-        if (a[i] < min)
-            min = a[i];
-    }
-    return min;
-}
-
-void sortColsByMinElement(matrix m){
-    insertionSortColsMatrixByColCriteria(m,getMin);
-}
-
-void test_sortColsByMinElement(){
-    matrix m = createMatrixFromArray(
-            (int[]) {3,5,2,4,3,3,
-                     2,5,1,8,2,7,
-                     6,1,4,4,8,3
-            },
-            3, 6
-    );
-    sortColsByMinElement(m);
-    assert(m.values[1][0] == 5);
-    assert(m.values[2][1] == 4);
-    assert(m.values[2][5] == 4);
-}
-void test_sortRowsByMinElement() {
-    matrix m = createMatrixFromArray(
-            (int[]) {7, 1, 2,
-                     1, 8, 1,
-                     3, 2, 3
-            },
-            3, 3
-    );
-    sortRowsByMinElement(m);
-    assert(m.values[1][0] == 7);
-    assert(m.values[2][1] == 8);
-}
-
 void test_swapMinAndMaxRows() {
     matrix m = createMatrixFromArray(
             (int[]) {6, 5, 4,
@@ -406,14 +350,58 @@ void test_swapMinAndMaxRows() {
     assert(m.values[2][1] == 8);
 }
 
-void test_tasks() {
-    test_swapMinAndMaxRows();
-    test_sortRowsByMinElement();
-    test_sortColsByMinElement();
+
+void test_sortColsByMinElement() {
+    matrix m = createMatrixFromArray(
+            (int[]) {3, 5, 2, 4, 3, 3,
+                     2, 5, 1, 8, 2, 7,
+                     6, 1, 4, 4, 8, 3
+            },
+            3, 6
+    );
+    sortColsByMinElement(m);
+    assert(m.values[1][0] == 5);
+    assert(m.values[2][1] == 4);
+    assert(m.values[2][5] == 4);
 }
 
+void test_getSquareOfMatrixIfSymmetric() {
+    matrix m = createMatrixFromArray(
+            (int[]) {6, 9, 3,
+                     9, 8, 7,
+                     3, 7, 1
+            },
+            3, 3
+    );
+    getSquareOfMatrixIfSymmetric(&m);
+    assert(m.values[1][0] == 147);
+}
+
+void test_sortRowsByMinElement() {
+    matrix m = createMatrixFromArray(
+            (int[]) {7, 1, 2,
+                     1, 8, 1,
+                     3, 2, 3
+            },
+            3, 3
+    );
+    sortRowsByMinElement(m);
+    assert(m.values[1][0] == 7);
+    assert(m.values[2][1] == 8);
+}
+
+
+void test_tasks() {
+    test_getSquareOfMatrixIfSymmetric();
+    test_sortColsByMinElement();
+    test_swapMinAndMaxRows();
+    test_sortRowsByMinElement();
+
+}
+
+
 int main() {
-    //test_functions();
+    test_functions();
     test_tasks();
 
 

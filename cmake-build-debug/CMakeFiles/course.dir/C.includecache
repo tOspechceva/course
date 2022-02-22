@@ -20,6 +20,22 @@ malloc.h
 stdlib.h
 -
 
+C:/course/libs/data_structures/matrix/matrix_tasks/takes.h
+assert.h
+-
+stdbool.h
+-
+stddef.h
+-
+stdio.h
+-
+malloc.h
+-
+stdlib.h
+-
+../matrix.h
+C:/course/libs/data_structures/matrix/matrix.h
+
 C:/course/main.c
 assert.h
 -
@@ -31,4 +47,6 @@ stdint.h
 -
 libs/data_structures/matrix/matrix.h
 C:/course/libs/data_structures/matrix/matrix.h
+libs/data_structures/matrix/matrix_tasks/takes.h
+C:/course/libs/data_structures/matrix/matrix_tasks/takes.h
 

@@ -176,6 +176,12 @@
 		<Unit filename="C:/course/libs/data_structures/matrix/matrix.h">
 			<Option target="data_structures"/>
 		</Unit>
+		<Unit filename="C:/course/libs/data_structures/matrix/matrix_tasks/takes.c">
+			<Option target="data_structures"/>
+		</Unit>
+		<Unit filename="C:/course/libs/data_structures/matrix/matrix_tasks/takes.h">
+			<Option target="data_structures"/>
+		</Unit>
 		<Unit filename="C:/course/libs/data_structures/vector/vector.c">
 			<Option target="data_structures"/>
 		</Unit>

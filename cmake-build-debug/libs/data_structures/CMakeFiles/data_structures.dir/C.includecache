@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/course/libs/data_structures/matrix/matrix.c
-matrix.h
-C:/course/libs/data_structures/matrix/matrix.h
-
 C:/course/libs/data_structures/matrix/matrix.h
 assert.h
 -
@@ -23,4 +19,24 @@ malloc.h
 -
 stdlib.h
 -
+
+C:/course/libs/data_structures/matrix/matrix_tasks/takes.c
+takes.h
+C:/course/libs/data_structures/matrix/matrix_tasks/takes.h
+
+C:/course/libs/data_structures/matrix/matrix_tasks/takes.h
+assert.h
+-
+stdbool.h
+-
+stddef.h
+-
+stdio.h
+-
+malloc.h
+-
+stdlib.h
+-
+../matrix.h
+C:/course/libs/data_structures/matrix/matrix.h
 
