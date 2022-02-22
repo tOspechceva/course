@@ -154,44 +154,7 @@ int getMinInArea(matrix m) {
 
     return min;
 }
-//float getDistance(int *a, int n){
-//    int sum=0;
-//    for (int i = 0; i < n; ++i) {
-//        sum+=a[i]*a[i];
-//    }
-//    return sqrt(sum);
-//}
-//
-//void createArray(int *a, matrix m, int rows, const int cols) {
-//    for (int i = 0; i < rows; i++) {
-//        a[i] = m.values[i][cols];
-//    }
-//}
-//void swapArray(int *m, int a, int b) {
-//    int t = m[a];
-//    m[a] = m[b];
-//    m[b] = t;
-//}
-//void insertionSortRowsMatrixByRowCriteriaF(matrix m,float (*criteria)(int *, int)){
-//    float a[m.nCols];
-//    float b[m.nRows];
-//    for (int i = 0; i < m.nCols; i++) {
-//        createArray(b, m, m.nRows, i);
-//        a[i] = criteria(b, m.nRows);
-//        for (int j = 0; j < i; j++) {
-//            if (a[j] > a[i]) {
-//                for (int k = i; k > j; k--) {
-//                    swapArray(a, k - 1, k);
-//                    swapColumns(m, k - 1, k);
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//void sortByDistances(matrix m){
-//    insertionSortRowsMatrixByRowCriteriaF(m,getDistance);
-//}
+
 
 void selectionSort(int *a, const size_t n) {
     if (n > 1) {
@@ -366,4 +329,43 @@ void printMatrixWithMinMax(matrix *ms, int nMatrix) {
         if (max[i] == min)
             outputMatrix(ms[i]);
     }
+}
+float getDistance(int *a, int n){
+    int sum=0;
+    for (int i = 0; i < n; ++i) {
+        sum+=a[i]*a[i];
+    }
+    return sqrt(sum);
+}
+
+void universalSwap(void *a, void *b, size_t size) {
+    char *a1 = a;
+    char *b1 = b;
+    for (int i = 0; i < size; i++) {
+        char t = *a1;
+        *a1 = *b1;
+        *b1 = t;
+
+        a1++;
+        b1++;
+    }
+}
+
+void insertionSortRowsMatrixByRowCriteriaFloat(matrix m, float (*criteria)(int *, int)) {
+    float *rows = (float *) malloc(sizeof(float ) * m.nRows);
+    for (int rIndex = 0; rIndex < m.nRows; ++rIndex)
+        rows[rIndex] = criteria(m.values[rIndex], m.nCols);
+
+    for (int rIndex = 1; rIndex < m.nRows; ++rIndex) {
+        int curIndex = rIndex;
+        while (curIndex > 0 && rows[curIndex] < rows[curIndex - 1]) {
+            swapRows(m, curIndex, curIndex - 1);
+            universalSwap(&rows[curIndex], &rows[curIndex - 1], sizeof(int));
+            curIndex--;
+        }
+    }
+}
+
+void sortByDistances(matrix m) {
+    insertionSortRowsMatrixByRowCriteriaFloat(m, getDistance);
 }

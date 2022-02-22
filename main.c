@@ -618,7 +618,30 @@ void test_printMatrixWithMinMax() {
     printMatrixWithMinMax(ms, 4);
     freeMemMatrices(ms, 4);
 }
+void test_sortByDistances() {
+    matrix testMatrix = createMatrixFromArray(
+            (int[]) {
+                    1, 3, 0, 8,
+                    4, 1, 2, 7,
+                    0, 9, 5, 3
+            }, 3, 4
+    );
 
+    sortByDistances(testMatrix);
+
+    matrix endMatrix = createMatrixFromArray(
+            (int[]) {
+                    4, 1, 2, 7,
+                    1, 3, 0, 8,
+                    0, 9, 5, 3
+            }, 3, 4
+    );
+
+    assert(twoMatricesEqual(testMatrix, endMatrix));
+
+    freeMemMatrix(testMatrix);
+    freeMemMatrix(endMatrix);
+}
 void test_tasks() {
     test_getSquareOfMatrixIfSymmetric();
     test_sortColsByMinElement();
@@ -635,6 +658,7 @@ void test_tasks() {
     test_countNonDescendingRowsMatrices();
     //test_printMatrixWithMaxZeroRows();
     //test_printMatrixWithMinMax();
+    test_sortByDistances();
 }
 
 
