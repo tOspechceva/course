@@ -588,6 +588,35 @@ void test_printMatrixWithMaxZeroRows() {
                     3, 2),
     };
     printMatrixWithMaxZeroRows(ms, 5);
+    freeMemMatrices(ms, 5);
+}
+
+void test_printMatrixWithMinMax() {
+    matrix ms[4] = {
+            createMatrixFromArray(
+                    (int[])
+                            {7, 1,
+                             1, 1
+                            },
+                    2, 2),
+            createMatrixFromArray(
+                    (int[]) {1, 5,
+                             2, 2
+                    },
+                    2, 2),
+            createMatrixFromArray(
+                    (int[]) {5, 4,
+                             2, 3
+                    },
+                    2, 2),
+            createMatrixFromArray(
+                    (int[]) {1, 3,
+                             7, 9
+                    },
+                    2, 2)
+    };
+    printMatrixWithMinMax(ms, 4);
+    freeMemMatrices(ms, 4);
 }
 
 void test_tasks() {
@@ -605,6 +634,7 @@ void test_tasks() {
     test_swapPenultimateRow2();
     test_countNonDescendingRowsMatrices();
     //test_printMatrixWithMaxZeroRows();
+    //test_printMatrixWithMinMax();
 }
 
 
@@ -636,3 +666,4 @@ int main() {
     //outputMatrix(m2);
     return 0;
 }
+

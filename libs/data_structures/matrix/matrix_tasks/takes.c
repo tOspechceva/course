@@ -345,3 +345,25 @@ void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix) {
             outputMatrix(ms[i]);
     }
 }
+
+int maxMatrix(matrix m) {
+    int max = m.values[0][0];
+    for (int i = 0; i < m.nRows; ++i) {
+        for (int j = 0; j < m.nCols; ++j) {
+            max = max_(max, m.values[i][j]);
+        }
+    }
+    return max;
+}
+
+void printMatrixWithMinMax(matrix *ms, int nMatrix) {
+    int max[nMatrix];
+    for (int i = 0; i < nMatrix; ++i) {
+        max[i] = maxMatrix(ms[i]);
+    }
+    int min = getMin(max, nMatrix);
+    for (int i = 0; i < nMatrix; ++i) {
+        if (max[i] == min)
+            outputMatrix(ms[i]);
+    }
+}
