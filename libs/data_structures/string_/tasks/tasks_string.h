@@ -13,5 +13,7 @@ char *getEndOfString(char *s);
 //удалит из строки все пробельные символы.
 void removeNonLetters(char *s);
 
+//Сокращает количество пробелов между словами данного предложения до одного
+void removeExtraSpaces(char *s);
 
 #endif //COURSE_TASKS_STRING_H

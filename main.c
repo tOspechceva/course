@@ -159,10 +159,30 @@ void test_copyIfReverse_2World() {
     ASSERT_STRING("kli tac", copy_);
 }
 
-void test_removeNonLetters(){
+void test_removeNonLetters() {
     char s1[10] = "a b  1";
     removeNonLetters(s1);
     ASSERT_STRING("ab1", s1);
+}
+
+void test_removeExtraSpaces() {
+    char s1[15] = "";
+    removeExtraSpaces(s1);
+    ASSERT_STRING("", s1);
+
+    char s2[15] = "  ";
+    removeExtraSpaces(s2);
+    ASSERT_STRING(" ", s2);
+
+    char s3[15] = "1  2 ";
+    removeExtraSpaces(s3);
+    ASSERT_STRING("1 2 ", s3);
+}
+
+void test_removeExtraSpaces_void() {
+    char s1[10] = "";
+    removeExtraSpaces(s1);
+    ASSERT_STRING("", s1);
 }
 
 void test() {
@@ -186,7 +206,8 @@ void test() {
     test_copyIfReverse_World();
     test_copyIfReverse_2World();
     test_removeNonLetters();
-
+    test_removeExtraSpaces();
+   // test_removeExtraSpaces_void();
 }
 
 int main() {
