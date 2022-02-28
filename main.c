@@ -187,7 +187,7 @@ void test_removeExtraSpaces() {
     ASSERT_STRING("1 2678 789 098 ", s5);
 }
 
-void test_reverseWorld(){
+void test_reverseWorld() {
     char s1[15] = "123";
     reverseWorld(s1);
     ASSERT_STRING("321", s1);
@@ -209,8 +209,23 @@ void test_reverseWorld(){
     ASSERT_STRING("1 2", s5);
 }
 
+void test_spaceInsteadOfNumber() {
+    char s1[100] = "a1m2c3";
+    spaceInsteadOfNumber(s1);
+    ASSERT_STRING("a m  c   ", s1);
 
+    char s2[100] = " ";
+    spaceInsteadOfNumber(s2);
+    ASSERT_STRING(" ", s2);
 
+    char s3[100] = "a1";
+    spaceInsteadOfNumber(s3);
+    ASSERT_STRING("a ", s3);
+
+    char s4[100] = "a";
+    spaceInsteadOfNumber(s4);
+    ASSERT_STRING("a", s4);
+}
 
 
 void test() {
@@ -235,7 +250,8 @@ void test() {
     test_copyIfReverse_2World();
     test_removeNonLetters();
     test_removeExtraSpaces();
-   test_reverseWorld();
+    test_reverseWorld();
+    test_spaceInsteadOfNumber();
 }
 
 int main() {

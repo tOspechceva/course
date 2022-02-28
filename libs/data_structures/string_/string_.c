@@ -80,7 +80,7 @@ char *copy(const char *beginSource, const char *endSource, char *beginDestinatio
     return beginDestination;
 }
 
-char* copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
+char *copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
     char *end = beginSource;
     while (end != endSource) {
         if (f(*end)) {
@@ -92,7 +92,7 @@ char* copyIf(char *beginSource, const char *endSource, char *beginDestination, i
     return beginDestination;
 }
 
-char* copyIfReverse(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int)){
+char *copyIfReverse(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int)) {
     char *end = rbeginSource;
     while (end != rendSource) {
         if (f(*end)) {

@@ -32,6 +32,7 @@ void removeExtraSpaces(char *s) {
         iRead++;
         iWrite++;
     }
+
     while (*iRead != '\0') {
         if (!isspace(*iRead) && isspace(*(iRead - 1))) {
             *iWrite = *(iRead - 1);
@@ -60,17 +61,20 @@ void digitToStart(WordDescriptor word) {
 
 int getWord(char *beginSearch, WordDescriptor *word) {
     word->begin = findNonSpace(beginSearch);
+
     if (*word->begin == '\0')
         return 0;
     word->end = findSpace(word->begin);
 
     return 1;
 }
-void *copyReverse(  char *s,WordDescriptor word){
+
+void *copyReverse(char *s, WordDescriptor word) {
     char *rBegin = s;
-    char *end=word.begin;
+    char *end = word.begin;
+
     while (end != word.end) {
-        *end=*rBegin ;
+        *end = *rBegin;
         end++;
         rBegin--;
     }
@@ -80,10 +84,35 @@ void *copyReverse(  char *s,WordDescriptor word){
 void reverseWorld(char *s) {
     char *beginSearch = s;
     WordDescriptor word;
+
     while (getWord(beginSearch, &word)) {
         char *endStringBuffer = copy(word.begin, word.end, _stringBuffer);
-        copyReverse(endStringBuffer-1,word);
+        copyReverse(endStringBuffer - 1, word);
         beginSearch = word.end;
     }
+}
 
+void spaceInsteadOfNumber(char *s) {
+    char *end = getEndOfString(s);
+    char *iRead = s;
+
+    char copy_[MAX_STRING_SIZE];
+    char *iWrite = copy_;
+
+    while (iRead != end) {
+        if (isdigit(*iRead)) {
+            char k = *iRead - '0';
+            for (int i = 0; i < k; ++i) {
+                *iWrite = ' ';
+                iWrite++;
+            }
+        } else {
+            *iWrite = *iRead;
+            iWrite++;
+        }
+        iRead++;
+    }
+
+    *iWrite = '\0';
+    copy(copy_, iWrite, s);
 }
