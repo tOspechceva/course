@@ -12,6 +12,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#define MAX_STRING_SIZE 100
+char _stringBuffer [ MAX_STRING_SIZE + 1];
+
 //Возвращает количество символов в строке.
 size_t strlen_(const char *begin);
 

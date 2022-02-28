@@ -7,6 +7,14 @@
 
 #include "../string_.h"
 
+typedef struct WordDescriptor {
+    char *begin; // позиция начала слова
+    char *end; // позиция первого символа, после последнего символа слова
+} WordDescriptor;
+
+
+
+
 // Возвращает указатель на последний элемент строки.
 char *getEndOfString(char *s);
 
@@ -15,5 +23,7 @@ void removeNonLetters(char *s);
 
 //Сокращает количество пробелов между словами данного предложения до одного
 void removeExtraSpaces(char *s);
+
+void reverseWorld(char *s);
 
 #endif //COURSE_TASKS_STRING_H

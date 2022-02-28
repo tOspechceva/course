@@ -177,13 +177,41 @@ void test_removeExtraSpaces() {
     char s3[15] = "1  2 ";
     removeExtraSpaces(s3);
     ASSERT_STRING("1 2 ", s3);
+
+    char s4[15] = "1  26 ";
+    removeExtraSpaces(s4);
+    ASSERT_STRING("1 26 ", s4);
+
+    char s5[20] = "1  2678 789   098 ";
+    removeExtraSpaces(s5);
+    ASSERT_STRING("1 2678 789 098 ", s5);
 }
 
-void test_removeExtraSpaces_void() {
-    char s1[10] = "";
-    removeExtraSpaces(s1);
-    ASSERT_STRING("", s1);
+void test_reverseWorld(){
+    char s1[15] = "123";
+    reverseWorld(s1);
+    ASSERT_STRING("321", s1);
+
+    char s2[15] = "123 567";
+    reverseWorld(s2);
+    ASSERT_STRING("321 765", s2);
+
+    char s3[15] = "";
+    reverseWorld(s3);
+    ASSERT_STRING("", s3);
+
+    char s4[15] = "1";
+    reverseWorld(s4);
+    ASSERT_STRING("1", s4);
+
+    char s5[15] = "1 2";
+    reverseWorld(s5);
+    ASSERT_STRING("1 2", s5);
 }
+
+
+
+
 
 void test() {
     test_strlen_();
@@ -207,7 +235,7 @@ void test() {
     test_copyIfReverse_2World();
     test_removeNonLetters();
     test_removeExtraSpaces();
-   // test_removeExtraSpaces_void();
+   test_reverseWorld();
 }
 
 int main() {
