@@ -4,4 +4,6 @@
 CMakeFiles/course.dir/main.c.obj: \
  ../libs/data_structures/matrix/matrix.h \
  ../libs/data_structures/matrix/matrix_tasks/takes.h \
+ ../libs/data_structures/string_/string_.h \
+ ../libs/data_structures/string_/tasks/tasks_string.h \
  ../main.c

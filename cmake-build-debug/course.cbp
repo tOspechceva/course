@@ -182,6 +182,18 @@
 		<Unit filename="C:/course/libs/data_structures/matrix/matrix_tasks/takes.h">
 			<Option target="data_structures"/>
 		</Unit>
+		<Unit filename="C:/course/libs/data_structures/string_/string_.c">
+			<Option target="data_structures"/>
+		</Unit>
+		<Unit filename="C:/course/libs/data_structures/string_/string_.h">
+			<Option target="data_structures"/>
+		</Unit>
+		<Unit filename="C:/course/libs/data_structures/string_/tasks/tasks_string.c">
+			<Option target="data_structures"/>
+		</Unit>
+		<Unit filename="C:/course/libs/data_structures/string_/tasks/tasks_string.h">
+			<Option target="data_structures"/>
+		</Unit>
 		<Unit filename="C:/course/libs/data_structures/vector/vector.c">
 			<Option target="data_structures"/>
 		</Unit>

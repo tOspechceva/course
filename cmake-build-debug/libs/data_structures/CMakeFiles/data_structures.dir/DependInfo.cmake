@@ -11,6 +11,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/course/libs/data_structures/bitset/bitset.c" "C:/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/bitset/bitset.c.obj"
   "C:/course/libs/data_structures/matrix/matrix.c" "C:/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj"
   "C:/course/libs/data_structures/matrix/matrix_tasks/takes.c" "C:/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix_tasks/takes.c.obj"
+  "C:/course/libs/data_structures/string_/string_.c" "C:/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.obj"
+  "C:/course/libs/data_structures/string_/tasks/tasks_string.c" "C:/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks_string.c.obj"
   "C:/course/libs/data_structures/vector/vector.c" "C:/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj"
   "C:/course/libs/data_structures/vector/vectorVoid.c" "C:/course/cmake-build-debug/libs/data_structures/CMakeFiles/data_structures.dir/vector/vectorVoid.c.obj"
   )

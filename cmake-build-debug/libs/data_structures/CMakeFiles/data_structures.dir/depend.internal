@@ -11,6 +11,13 @@ libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix_tasks/takes.c.
  C:/course/libs/data_structures/matrix/matrix.h
  C:/course/libs/data_structures/matrix/matrix_tasks/takes.c
  C:/course/libs/data_structures/matrix/matrix_tasks/takes.h
+libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.obj
+ C:/course/libs/data_structures/string_/string_.c
+ C:/course/libs/data_structures/string_/string_.h
+libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks_string.c.obj
+ C:/course/libs/data_structures/string_/string_.h
+ C:/course/libs/data_structures/string_/tasks/tasks_string.c
+ C:/course/libs/data_structures/string_/tasks/tasks_string.h
 libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj
  C:/course/libs/data_structures/vector/vector.c
  C:/course/libs/data_structures/vector/vector.h

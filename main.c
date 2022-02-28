@@ -1,693 +1,197 @@
-# include <assert.h>
-# include <stdbool.h>
-# include <stdio.h >
-# include <stdint.h >
+#include <assert.h>
+#include <stdbool.h>
+#include <stdio.h >
+#include <stdint.h >
 
-# include "libs/data_structures/matrix/matrix.h"
-# include "libs/data_structures/matrix/matrix_tasks/takes.h"
+#include "libs/data_structures/string_/string_.h"
+#include "libs/data_structures/matrix/matrix.h"
+#include "libs/data_structures/matrix/matrix_tasks/takes.h"
+#include "libs/data_structures/string_/tasks/tasks_string.h"
 
-
-void test_swapRows_firstLines() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     6, 0, 0,
-                     0, 0, 1,
-                     0, 0, 0,
-                     0, 1, 1,
-            },
-            5, 3
-    );
-    swapRows(m, 0, 1);
-    assert(m.values[0][0] == 6);
-    freeMemMatrix(m);
+void assertString(const char *expected, char *got,
+                  char const *fileName, char const *funcName,
+                  int line) {
+    if (strcmp(expected, got)) {
+        fprintf(stderr, "File %s\n", fileName);
+        fprintf(stderr, "%s - failed on line %d\n", funcName, line);
+        fprintf(stderr, "Expected : \"%s\"\n", expected);
+        fprintf(stderr, "Got: \"%s\"\n\n", got);
+    } else
+        fprintf(stderr, "%s - OK\n", funcName);
 }
 
-void test_swapRows() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-                     0, 0, 0,
-                     0, 1, 1,
-            },
-            5, 3
-    );
-    swapRows(m, 1, 2);
-    assert(m.values[1][2] == 1);
-    freeMemMatrix(m);
+#define ASSERT_STRING(expected, got) assertString(expected, got, __FILE__, __FUNCTION__, __LINE__)
+
+
+void test_strlen_() {
+    char *s1 = "Hi";
+    char s2[10] = "\tHello\t";
+    assert(strlen_(s1) == 2);
+    assert(strlen_(s2) == 7);
 }
 
-void test_swapRows_lastLines() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-                     9, 8, 0,
-                     0, 1, 1,
-            },
-            5, 3
-    );
-    swapRows(m, 4, 3);
-    assert(m.values[4][1] == 8);
-    freeMemMatrix(m);
+void test_find() {
+    char s2[10] = "Hello";
+    char *s3 = find(s2, s2 + strlen_(s2), 'l');
+    assert(*s3 == 'l');
 }
 
-void test_swapColumns_lastColumns() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-                     9, 8, 0,
-                     0, 1, 1,
-            },
-            5, 3
-    );
-    swapColumns(m, 2, 1);
-    assert(m.values[3][1] == 0);
-    freeMemMatrix(m);
+void test_findNonSpace() {
+    char s2[10] = "\t Hello\t";
+    char *s3 = findNonSpace(s2);
+    assert(*s3 == 'H');
 }
 
-void test_swapColumns_firstColumns() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-                     9, 8, 0,
-                     0, 1, 1,
-            },
-            5, 3
-    );
-    swapColumns(m, 0, 1);
-    assert(m.values[3][1] == 9);
-    freeMemMatrix(m);
+void test_findSpace() {
+    char s2[10] = "Hel lo";
+    char *s3 = findSpace(s2);
+    assert(*s3 == ' ');
 }
 
-void test_isSquareMatrix() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-                     9, 8, 0,
-                     0, 1, 1,
-            },
-            5, 3
-    );
-    assert(!isSquareMatrix(m));
-    freeMemMatrix(m);
+void test_findNonSpaceReverse() {
+    char s2[10] = "Hel lo\t";
+    char *s3 = findNonSpaceReverse(s2 + strlen_(s2) - 1, s2);
+    assert(*s3 == 'o');
 }
 
-void test_isSquareMatrix2() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-            },
-            3, 3
-    );
-    assert(isSquareMatrix(m));
-    freeMemMatrix(m);
+void test_findSpaceReverse() {
+    char s2[10] = "Hel\tlo";
+    char *s3 = findSpaceReverse(s2 + strlen_(s2) - 1, s2);
+    assert(*s3 == '\t');
 }
 
-void test_sameSizeMatrices() {
-    matrix m = createMatrix(3, 3);
-    matrix m2 = createMatrix(3, 3);
-    assert(sameSizeMatrices(m, m2));
-    freeMemMatrix(m);
-    freeMemMatrix(m2);
-}
-
-void test_twoMatricesEqual() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-            },
-            3, 3
-    );
-    matrix m2 = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-            },
-            3, 3
-    );
-    assert(twoMatricesEqual(m, m2));
-    freeMemMatrix(m);
-    freeMemMatrix(m2);
-}
-
-void test_twoMatricesEqual2() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     0, 0, 0,
-                     0, 0, 1,
-            },
-            3, 3
-    );
-    matrix m2 = createMatrixFromArray(
-            (int[]) {1, 1, 0,
-                     8, 0, 0,
-                     0, 0, 1,
-            },
-            3, 3
-    );
-    assert(!twoMatricesEqual(m, m2));
-    freeMemMatrix(m);
-    freeMemMatrix(m2);
-}
-
-void test_isEMatrix() {
-    matrix m2 = createMatrixFromArray(
-            (int[]) {1},
-            1, 1
-    );
-    assert(isEMatrix(m2));
-    freeMemMatrix(m2);
-}
-
-void test_isEMatrix1() {
-    matrix m2 = createMatrixFromArray(
-            (int[]) {1, 2},
-            1, 2
-    );
-    assert(!isEMatrix(m2));
-    freeMemMatrix(m2);
-}
-
-void test_isSymmetricMatrix() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 0, 0,
-                     0, 1, 0,
-                     0, 0, 1,
-
-            },
-            3, 3
-    );
-    assert(isSymmetricMatrix(m));
-    freeMemMatrix(m);
-}
-
-void test_isSymmetricMatrix2() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 0, 0,
-                     0, 1, 1,
-                     0, 0, 1,
-
-            },
-            3, 3
-    );
-    assert(!isSymmetricMatrix(m));
-    freeMemMatrix(m);
-}
-
-void test_transposeSquareMatrix() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 2, 3,
-                     4, 5, 6,
-                     7, 8, 9,
-
-            },
-            3, 3
-    );
-    transposeSquareMatrix(m);
-    assert(m.values[1][0] == 2);
-    assert(m.values[0][2] == 7);
-    assert(m.values[2][1] == 6);
-    freeMemMatrix(m);
-}
-
-void test_getMinValuePos() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 2, 3,
-                     4, 5, 6,
-                     7, 8, 9,
-
-            },
-            3, 3
-    );
-    position p = getMinValuePos(m);
-    assert(p.rowIndex == 0);
-    assert(p.colIndex == 0);
-    freeMemMatrix(m);
-}
-
-void test_getMinValuePos1() {
-    matrix m = createMatrixFromArray(
-            (int[]) {9, 2, 3,
-                     4, 5, 6,
-                     7, 8, 1,
-
-            },
-            3, 3
-    );
-    position p = getMinValuePos(m);
-    assert(p.rowIndex == 2);
-    assert(p.colIndex == 2);
-    freeMemMatrix(m);
-}
-
-void test_getMaxValuePos() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 2, 3,
-                     4, 5, 6,
-                     7, 8, 9,
-
-            },
-            3, 3
-    );
-    position p = getMaxValuePos(m);
-    assert(p.rowIndex == 2);
-    assert(p.colIndex == 2);
-    freeMemMatrix(m);
-}
-
-int criteria(int *a, int n) {
-    int sum = 0;
-    for (int i = 0; i < n; i++) {
-        sum += a[i];
-    }
-    return sum;
-}
-
-void test_insertionSortRowsMatrixByRowCriteria_sum() {
-    matrix m = createMatrixFromArray(
-            (int[]) {9, 8, 7,
-                     6, 5, 4,
-                     3, 2, 1
-            },
-            3, 3
-    );
-    insertionSortRowsMatrixByRowCriteria(m, criteria);
-
-    assert(m.values[0][0] == 3);
-    assert(m.values[2][0] == 9);
-    freeMemMatrix(m);
-}
-
-void test_insertionSortRowsMatrixByRowCriteria() {
-    matrix m = createMatrixFromArray(
-            (int[]) {6, 5, 4,
-                     9, 8, 7,
-                     3, 2, 1
-            },
-            3, 3
-    );
-    insertionSortRowsMatrixByRowCriteria(m, criteria);
-
-    assert(m.values[0][0] == 3);
-    assert(m.values[2][0] == 9);
-    freeMemMatrix(m);
-}
-
-void test_insertionSortColsMatrixByColCriteria() {
-    matrix m = createMatrixFromArray(
-            (int[]) {6, 5, 4,
-                     9, 8, 7,
-                     3, 2, 1
-            },
-            3, 3
-    );
-    insertionSortColsMatrixByColCriteria(m, criteria);
-    assert(m.values[0][0] == 4);
-    assert(m.values[2][2] == 3);
-    freeMemMatrix(m);
+void test_strcmp_allFalse() {
+    char *s1 = "Hi";
+    char s2[10] = "\tHello\t";
+    assert(strcmp(s1, s2) == 'H' - '\t');
 
 }
 
-void test_functions() {
-    test_swapRows();
-    test_swapRows_firstLines();
-    test_swapRows_lastLines();
-    test_swapColumns_lastColumns();
-    test_swapColumns_firstColumns();
-    test_isSquareMatrix();
-    test_isSquareMatrix2();
-    test_sameSizeMatrices();
-    test_twoMatricesEqual();
-    test_twoMatricesEqual2();
-    test_isEMatrix();
-    test_isEMatrix1();
-    test_isSymmetricMatrix();
-    test_isSymmetricMatrix2();
-    test_transposeSquareMatrix();
-    test_getMinValuePos1();
-    test_getMaxValuePos();
-    test_insertionSortRowsMatrixByRowCriteria_sum();
-    test_insertionSortRowsMatrixByRowCriteria();
-    test_insertionSortColsMatrixByColCriteria();
+void test_strcmp_True() {
+    char *s1 = "Hi";
+    char s2[10] = "Hi";
+    assert(strcmp(s1, s2) == 0);
+
 }
 
-void test_swapMinAndMaxRows() {
-    matrix m = createMatrixFromArray(
-            (int[]) {6, 5, 4,
-                     9, 8, 7,
-                     3, 2, 1
-            },
-            3, 3
-    );
-    swapMinAndMaxRows(m);
-    assert(m.values[1][0] == 3);
-    assert(m.values[2][1] == 8);
-    freeMemMatrix(m);
+void test_strcmp_FalseNegative() {
+    char *s1 = "Ai";
+    char s2[10] = "Hi";
+    assert(strcmp(s1, s2) == 'A' - 'H');
+
 }
 
+void test_strcmp_2WordsTrue() {
+    char *s1 = "aa mm";
+    char s2[10] = "aa mm";
+    assert(strcmp(s1, s2) == 0);
 
-void test_sortColsByMinElement() {
-    matrix m = createMatrixFromArray(
-            (int[]) {3, 5, 2, 4, 3, 3,
-                     2, 5, 1, 8, 2, 7,
-                     6, 1, 4, 4, 8, 3
-            },
-            3, 6
-    );
-    sortColsByMinElement(m);
-    assert(m.values[1][0] == 5);
-    assert(m.values[2][1] == 4);
-    assert(m.values[2][5] == 4);
-    freeMemMatrix(m);
 }
 
-void test_getSquareOfMatrixIfSymmetric() {
-    matrix m = createMatrixFromArray(
-            (int[]) {6, 9, 3,
-                     9, 8, 7,
-                     3, 7, 1
-            },
-            3, 3
-    );
-    getSquareOfMatrixIfSymmetric(&m);
-    assert(m.values[1][0] == 147);
-    freeMemMatrix(m);
+void test_strcmp_2WordsFalse() {
+    char *s1 = "aa Mm";
+    char s2[10] = "aa mm";
+    assert(strcmp(s1, s2) == 'M' - 'm');
 }
 
-void test_sortRowsByMinElement() {
-    matrix m = createMatrixFromArray(
-            (int[]) {7, 1, 2,
-                     1, 8, 1,
-                     3, 2, 3
-            },
-            3, 3
-    );
-    sortRowsByMinElement(m);
-    assert(m.values[1][0] == 7);
-    assert(m.values[2][1] == 8);
-    freeMemMatrix(m);
+void test_copy_1Symbol() {
+    char s1[10] = "a";
+    char copy_[10];
+    char *endCopy = copy(s1, s1 + strlen_(s1), copy_);
+    ASSERT_STRING("a", copy_);
 }
 
-void test_transposeIfMatrixHasNotEqualSumOfRows() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 2, 3,
-                     4, 5, 6,
-                     7, 8, 9,
-
-            },
-            3, 3
-    );
-    transposeIfMatrixHasNotEqualSumOfRows(m);
-    assert(m.values[1][0] == 2);
-    assert(m.values[0][2] == 7);
-    assert(m.values[2][1] == 6);
-    freeMemMatrix(m);
+void test_copy_World() {
+    char s1[15] = "beautiful";
+    char copy_[15];
+    char *endCopy = copy(s1, s1 + strlen_(s1), copy_);
+    ASSERT_STRING("beautiful", copy_);
 }
 
-void test_isMutuallyInverseMatrices() {
-    matrix m1 = createMatrixFromArray(
-            (int[]) {2, 1, -1,
-                     5, 2, 4,
-                     7, 3, 2
-            },
-            3, 3
-    );
-    matrix m2 = createMatrixFromArray(
-            (int[]) {-8, -5, 6,
-                     18, 11, -13,
-                     1, 1, -1
-            },
-            3, 3
-    );
-    assert(isMutuallyInverseMatrices(m1, m2));
-    freeMemMatrix(m1);
-    freeMemMatrix(m2);
+void test_copy_2World() {
+    char s1[20] = "beautiful cat";
+    char copy_[20];
+    char *endCopy = copy(s1, s1 + strlen_(s1), copy_);
+    *endCopy = '\0';
+    ASSERT_STRING("beautiful cat", copy_);
 }
 
-void test_findSumOfMaxesOfPseudoDiagonal() {
-    matrix m = createMatrixFromArray(
-            (int[]) {3, 2, 5, 4,
-                     1, 3, 6, 3,
-                     3, 2, 1, 2
-            },
-            3, 4
-    );
-    assert(findSumOfMaxesOfPseudoDiagonal(m) == 20);
-    freeMemMatrix(m);
+bool notM(char a) {
+    return a != 'M';
 }
 
-void test_findSumOfMaxesOfPseudoDiagonal2() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 2,
-                     3, 4
-            },
-            2, 2
-    );
-    assert(findSumOfMaxesOfPseudoDiagonal(m) == 5);
-    freeMemMatrix(m);
+void test_copyIf_World() {
+    char s1[15] = "MbeMauMtifuMl";
+    char copy_[15];
+    char *endCopy = copyIf(s1, s1 + strlen_(s1), copy_, notM);
+    ASSERT_STRING("beautiful", copy_);
 }
 
-void test_getMinInArea() {
-    matrix m = createMatrixFromArray(
-            (int[]) {10, 7, 5, 6,
-                     3, 11, 8, 9,
-                     4, 1, 12, 2
-            },
-            3, 4
-    );
-    assert(getMinInArea(m) == 5);
-    freeMemMatrix(m);
+void test_copyIf_Symbol() {
+    char s1[25] = "M";
+    char copy_[25];
+    char *endCopy = copyIf(s1, s1 + strlen_(s1), copy_, notM);
+    *endCopy = '\0';
+    ASSERT_STRING("", copy_);
 }
 
-void test_countEqClassesByRowsSum() {
-    matrix m = createMatrixFromArray(
-            (int[]) {2, 7,
-                     7, 1,
-                     5, 4,
-                     4, 3,
-                     1, 6,
-                     0, 8
-
-            },
-            6, 2
-    );
-    assert(countEqClassesByRowsSum(m) == 3);
-    freeMemMatrix(m);
+void test_copyIf_2World() {
+    char s1[20] = "MbeMauMtifuMl Moon";
+    char copy_[20];
+    char *endCopy = copyIf(s1, s1 + strlen_(s1), copy_, notM);
+    *endCopy = '\0';
+    ASSERT_STRING("beautiful oon", copy_);
 }
 
-void test_getNSpecialElement() {
-    matrix m = createMatrixFromArray(
-            (int[]) {3, 5, 5, 4,
-                     2, 3, 6, 7,
-                     12, 2, 1, 2
-            },
-            3, 4
-    );
-    assert(getNSpecialElement(m) == 2);
-    freeMemMatrix(m);
+void test_copyIfReverse_World() {
+    char s1[10] = "Mcat";
+    char copy_[10];
+    char *endCopy = copyIfReverse(s1 + strlen_(s1) - 1, s1, copy_, notM);
+    *endCopy = '\0';
+    ASSERT_STRING("tac", copy_);
 }
 
-void test_swapPenultimateRow() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 2, 3,
-                     4, 5, 6,
-                     7, 8, 1
-            },
-            3, 3
-    );
-    swapPenultimateRow(m);
-    assert(m.values[1][0] == 1);
-    assert(m.values[1][1] == 4);
-    assert(m.values[1][2] == 7);
-    freeMemMatrix(m);
+void test_copyIfReverse_2World() {
+    char s1[10] = "Mcat Milk";
+    char copy_[10];
+    char *endCopy = copyIfReverse(s1 + strlen_(s1) - 1, s1, copy_, notM);
+    *endCopy = '\0';
+    ASSERT_STRING("kli tac", copy_);
 }
 
-void test_swapPenultimateRow2() {
-    matrix m = createMatrixFromArray(
-            (int[]) {1, 2,
-                     3, 4
-            },
-            2, 2
-    );
-    swapPenultimateRow(m);
-    assert(m.values[0][0] == 1);
-    assert(m.values[0][1] == 3);
-    freeMemMatrix(m);
+void test_removeNonLetters(){
+    char s1[10] = "a b  1";
+    removeNonLetters(s1);
+    ASSERT_STRING("ab1", s1);
 }
 
-void test_countNonDescendingRowsMatrices() {
-    matrix ms[4] = {
-            createMatrixFromArray(
-                    (int[])
-                            {7, 1,
-                             1, 1
-                            },
-                    2, 2),
-            createMatrixFromArray(
-                    (int[]) {1, 6,
-                             2, 2
-                    },
-                    2, 2),
-            createMatrixFromArray(
-                    (int[]) {5, 4,
-                             2, 3
-                    },
-                    2, 2),
-            createMatrixFromArray(
-                    (int[]) {1, 3,
-                             7, 9
-                    },
-                    2, 2)
-    };
-    assert(countNonDescendingRowsMatrices(ms, 4) == 2);
-    freeMemMatrices(ms, 4);
+void test() {
+    test_strlen_();
+    test_find();
+    test_findNonSpace();
+    test_findSpace();
+    test_findNonSpaceReverse();
+    test_findSpaceReverse();
+    test_strcmp_allFalse();
+    test_strcmp_True();
+    test_strcmp_FalseNegative();
+    test_strcmp_2WordsTrue();
+    test_strcmp_2WordsFalse();
+    test_copy_1Symbol();
+    test_copy_World();
+    test_copy_2World();
+    test_copyIf_World();
+    test_copyIf_Symbol();
+    test_copyIf_2World();
+    test_copyIfReverse_World();
+    test_copyIfReverse_2World();
+    test_removeNonLetters();
+
 }
-
-void test_printMatrixWithMaxZeroRows() {
-    matrix ms[5] = {
-            createMatrixFromArray(
-                    (int[])
-                            {0, 1,
-                             1, 0,
-                             0, 0
-                            },
-                    3, 2),
-            createMatrixFromArray(
-                    (int[])
-                            {1, 1,
-                             2, 1,
-                             1, 1
-                            },
-                    3, 2),
-            createMatrixFromArray(
-                    (int[])
-                            {0, 0,
-                             0, 0,
-                             4, 7
-                            },
-                    3, 2),
-            createMatrixFromArray(
-                    (int[])
-                            {0, 0,
-                             1, 0,
-                             0, 0
-                            },
-                    3, 2),
-            createMatrixFromArray(
-                    (int[])
-                            {0, 1,
-                             0, 2,
-                             0, 3
-                            },
-                    3, 2),
-    };
-    printMatrixWithMaxZeroRows(ms, 5);
-    freeMemMatrices(ms, 5);
-}
-
-void test_printMatrixWithMinMax() {
-    matrix ms[4] = {
-            createMatrixFromArray(
-                    (int[])
-                            {7, 1,
-                             1, 1
-                            },
-                    2, 2),
-            createMatrixFromArray(
-                    (int[]) {1, 5,
-                             2, 2
-                    },
-                    2, 2),
-            createMatrixFromArray(
-                    (int[]) {5, 4,
-                             2, 3
-                    },
-                    2, 2),
-            createMatrixFromArray(
-                    (int[]) {1, 3,
-                             7, 9
-                    },
-                    2, 2)
-    };
-    printMatrixWithMinMax(ms, 4);
-    freeMemMatrices(ms, 4);
-}
-void test_sortByDistances() {
-    matrix testMatrix = createMatrixFromArray(
-            (int[]) {
-                    1, 3, 0, 8,
-                    4, 1, 2, 7,
-                    0, 9, 5, 3
-            }, 3, 4
-    );
-
-    sortByDistances(testMatrix);
-
-    matrix endMatrix = createMatrixFromArray(
-            (int[]) {
-                    4, 1, 2, 7,
-                    1, 3, 0, 8,
-                    0, 9, 5, 3
-            }, 3, 4
-    );
-
-    assert(twoMatricesEqual(testMatrix, endMatrix));
-
-    freeMemMatrix(testMatrix);
-    freeMemMatrix(endMatrix);
-}
-void test_tasks() {
-    test_getSquareOfMatrixIfSymmetric();
-    test_sortColsByMinElement();
-    test_swapMinAndMaxRows();
-    test_sortRowsByMinElement();
-    test_isMutuallyInverseMatrices();
-    test_findSumOfMaxesOfPseudoDiagonal();
-    test_findSumOfMaxesOfPseudoDiagonal2();
-    test_getMinInArea();
-    test_countEqClassesByRowsSum();
-    test_getNSpecialElement();
-    test_swapPenultimateRow();
-    test_swapPenultimateRow2();
-    test_countNonDescendingRowsMatrices();
-    //test_printMatrixWithMaxZeroRows();
-    //test_printMatrixWithMinMax();
-    test_sortByDistances();
-}
-
 
 int main() {
-    test_functions();
-    test_tasks();
+    test();
 
-
-    // matrix ms[3] = {
-    //         createMatrix(2, 2),
-    //         createMatrix(1, 1),
-    //         createMatrix(1, 1),
-    // };
-    //inputMatrices(ms,3);
-    //outputMatrices(ms,3);
-
-    //matrix m1 = createMatrix(3, 2);
-    //matrix m2= createMatrix(2,3);
-    //inputMatrix(&m1);
-    //inputMatrix(&m2);
-    //if (isSymmetricMatrix(m1))
-    //    printf("Yes");
-    //else
-    //    printf("No");
-
-    //position p = getMaxValuePos(m1);
-    //printf("%d %d %d", p.rowIndex, p.colIndex, m1.values[p.rowIndex][p.colIndex]);
-    //outputMatrix(m1);
-    //outputMatrix(m2);
     return 0;
 }
 

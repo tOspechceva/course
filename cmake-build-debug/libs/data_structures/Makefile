@@ -201,6 +201,54 @@ matrix/matrix_tasks/takes.c.s:
 	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix_tasks/takes.c.s
 .PHONY : matrix/matrix_tasks/takes.c.s
 
+string_/string_.obj: string_/string_.c.obj
+.PHONY : string_/string_.obj
+
+# target to build an object file
+string_/string_.c.obj:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.obj
+.PHONY : string_/string_.c.obj
+
+string_/string_.i: string_/string_.c.i
+.PHONY : string_/string_.i
+
+# target to preprocess a source file
+string_/string_.c.i:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.i
+.PHONY : string_/string_.c.i
+
+string_/string_.s: string_/string_.c.s
+.PHONY : string_/string_.s
+
+# target to generate assembly for a file
+string_/string_.c.s:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/string_.c.s
+.PHONY : string_/string_.c.s
+
+string_/tasks/tasks_string.obj: string_/tasks/tasks_string.c.obj
+.PHONY : string_/tasks/tasks_string.obj
+
+# target to build an object file
+string_/tasks/tasks_string.c.obj:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks_string.c.obj
+.PHONY : string_/tasks/tasks_string.c.obj
+
+string_/tasks/tasks_string.i: string_/tasks/tasks_string.c.i
+.PHONY : string_/tasks/tasks_string.i
+
+# target to preprocess a source file
+string_/tasks/tasks_string.c.i:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks_string.c.i
+.PHONY : string_/tasks/tasks_string.c.i
+
+string_/tasks/tasks_string.s: string_/tasks/tasks_string.c.s
+.PHONY : string_/tasks/tasks_string.s
+
+# target to generate assembly for a file
+string_/tasks/tasks_string.c.s:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\data_structures\CMakeFiles\data_structures.dir\build.make libs/data_structures/CMakeFiles/data_structures.dir/string_/tasks/tasks_string.c.s
+.PHONY : string_/tasks/tasks_string.c.s
+
 vector/vector.obj: vector/vector.c.obj
 .PHONY : vector/vector.obj
 
@@ -267,6 +315,12 @@ help:
 	@echo ... matrix/matrix_tasks/takes.obj
 	@echo ... matrix/matrix_tasks/takes.i
 	@echo ... matrix/matrix_tasks/takes.s
+	@echo ... string_/string_.obj
+	@echo ... string_/string_.i
+	@echo ... string_/string_.s
+	@echo ... string_/tasks/tasks_string.obj
+	@echo ... string_/tasks/tasks_string.i
+	@echo ... string_/tasks/tasks_string.s
 	@echo ... vector/vector.obj
 	@echo ... vector/vector.i
 	@echo ... vector/vector.s

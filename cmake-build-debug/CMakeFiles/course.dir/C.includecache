@@ -38,6 +38,26 @@ math.h
 ../matrix.h
 C:/course/libs/data_structures/matrix/matrix.h
 
+C:/course/libs/data_structures/string_/string_.h
+assert.h
+-
+stdbool.h
+-
+stddef.h
+-
+stdio.h
+-
+malloc.h
+-
+stdlib.h
+-
+ctype.h
+-
+
+C:/course/libs/data_structures/string_/tasks/tasks_string.h
+../string_.h
+C:/course/libs/data_structures/string_/string_.h
+
 C:/course/main.c
 assert.h
 -
@@ -47,8 +67,12 @@ stdio.h
 -
 stdint.h 
 -
+libs/data_structures/string_/string_.h
+C:/course/libs/data_structures/string_/string_.h
 libs/data_structures/matrix/matrix.h
 C:/course/libs/data_structures/matrix/matrix.h
 libs/data_structures/matrix/matrix_tasks/takes.h
 C:/course/libs/data_structures/matrix/matrix_tasks/takes.h
+libs/data_structures/string_/tasks/tasks_string.h
+C:/course/libs/data_structures/string_/tasks/tasks_string.h
 
