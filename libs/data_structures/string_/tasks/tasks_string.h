@@ -7,6 +7,7 @@
 
 #include "../string_.h"
 
+
 typedef struct WordDescriptor {
     char *begin; // позиция начала слова
     char *end; // позиция первого символа, после последнего символа слова
@@ -32,5 +33,11 @@ void reverseWorld(char *s);
 
 //
 void spaceInsteadOfNumber(char *s);
+
+//
+void replace(char *source, char *w1, char *w2);
+
+
+int strcmpWord(WordDescriptor w1, WordDescriptor w2);
 
 #endif //COURSE_TASKS_STRING_H

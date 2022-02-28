@@ -4,6 +4,7 @@
 
 #include "tasks_string.h"
 
+
 char *getEndOfString(char *s) {
     char *end = s;
     while (*end != '\0')
@@ -115,4 +116,53 @@ void spaceInsteadOfNumber(char *s) {
 
     *iWrite = '\0';
     copy(copy_, iWrite, s);
+}
+
+int strcmpWord(WordDescriptor w1, WordDescriptor w2) {
+    char *copyW1 = w1.begin;
+    char *copyW2 = w2.begin;
+
+    while (copyW1 != w1.end && copyW2 != w2.end && *copyW2 == *copyW1) {
+        copyW1++;
+        copyW2++;
+    }
+
+    if ((*copyW1 == ' ' || *copyW1 == '\0') && (*copyW2 == ' ' || *copyW2 == '\0'))
+        return 1;
+    else
+        return 0;
+}
+
+
+void replace(char *source, char *w1, char *w2) {
+
+    size_t w1Size = strlen_(w1);
+    size_t w2Size = strlen_(w2);
+    WordDescriptor word1 = {w1, w1 + w1Size};
+    WordDescriptor word2 = {w2, w2 + w2Size};
+
+    char *readPtr, *recPtr, *end;
+    if (w1Size >= w2Size) {
+        readPtr = source;
+        recPtr = source;
+    } else {
+        end = copy(source, getEndOfString(source), _stringBuffer);
+        *end = '\0';
+        readPtr = _stringBuffer;
+        recPtr = source;
+    }
+
+    WordDescriptor word;
+
+    while (getWord(readPtr, &word) && recPtr != end) {
+        if (strcmpWord(word, word1)) {
+            recPtr = copy(word2.begin, word2.end, recPtr);
+        } else {
+            recPtr = copy(word.begin, word.end, recPtr);
+        }
+        *recPtr=' ';
+        recPtr++;
+        readPtr = word.end;
+    }
+    *recPtr = '\0';
 }

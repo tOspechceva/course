@@ -13,7 +13,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-
 //Возвращает количество символов в строке.
 size_t strlen_(const char *begin);
 
