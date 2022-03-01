@@ -12,7 +12,9 @@ typedef struct WordDescriptor {
     char *begin; // позиция начала слова
     char *end; // позиция первого символа, после последнего символа слова
 } WordDescriptor;
-
+typedef struct ElementDescriptor {
+    char begin;
+} ElementDescriptor;
 # define MAX_N_WORDS_IN_STRING 100
 # define MAX_WORD_SIZE 20
 #define MAX_STRING_SIZE 100
@@ -39,5 +41,7 @@ void replace(char *source, char *w1, char *w2);
 
 
 int strcmpWord(WordDescriptor w1, WordDescriptor w2);
+
+int orderedAlphabetically(char *s);
 
 #endif //COURSE_TASKS_STRING_H

@@ -37,9 +37,22 @@ void test_find() {
 }
 
 void test_findNonSpace() {
+    char s[10] = " ";
+    char *s1 = findNonSpace(s);
+    assert(*s1 == '\0');
+
     char s2[10] = "\t Hello\t";
     char *s3 = findNonSpace(s2);
     assert(*s3 == 'H');
+
+    char s4[10] = "";
+    char *s5 = findNonSpace(s4);
+    assert(*s5 == '\0');
+
+    char s6[10] = "nty i";
+    char *s7 = findNonSpace(s6);
+    assert(*s7 == 'n');
+
 }
 
 void test_findSpace() {
@@ -98,6 +111,8 @@ void test_copy_1Symbol() {
     char s1[10] = "a";
     char copy_[10];
     char *endCopy = copy(s1, s1 + strlen_(s1), copy_);
+    *endCopy = '\0';
+
     ASSERT_STRING("a", copy_);
 }
 
@@ -105,6 +120,7 @@ void test_copy_World() {
     char s1[15] = "beautiful";
     char copy_[15];
     char *endCopy = copy(s1, s1 + strlen_(s1), copy_);
+    *endCopy = '\0';
     ASSERT_STRING("beautiful", copy_);
 }
 
@@ -249,27 +265,43 @@ void test_replace() {
 
 
 void test_strcmpForWorld() {
-  char s[10] = "Hello!";
-  WordDescriptor w = {s, s + 6};
-  char s1[10] = "Hello!";
-  WordDescriptor w1 = {s1, s1 + 6};
-  assert(strcmpWord(w,w1));
+    char s[10] = "Hello!";
+    WordDescriptor w = {s, s + 6};
+    char s1[10] = "Hello!";
+    WordDescriptor w1 = {s1, s1 + 6};
+    assert(strcmpWord(w, w1));
 
-   char s2[10] = "Hello! ";
-   WordDescriptor w2 = {s2, s2 + strlen_(s2)};
-   char s3[10] = "Hello!";
-   WordDescriptor w3 = {s3, s3 + strlen_(s3)};
-   assert(strcmpWord(w2,w3));
+    char s2[10] = "Hello! ";
+    WordDescriptor w2 = {s2, s2 + strlen_(s2)};
+    char s3[10] = "Hello!";
+    WordDescriptor w3 = {s3, s3 + strlen_(s3)};
+    assert(strcmpWord(w2, w3));
 
     char s4[10] = "Helto! ";
     WordDescriptor w4 = {s4, s4 + strlen_(s4)};
     char s5[10] = "Hello!";
     WordDescriptor w5 = {s5, s5 + strlen_(s5)};
-    assert(!strcmpWord(w4,w5));
+    assert(!strcmpWord(w4, w5));
 }
 
 
+void test_orderedAlphabetically() {
+   char s[10] = "a b c d";
+   assert(orderedAlphabetically(s));
 
+  char s1[10] = " ";
+  assert(orderedAlphabetically(s1));
+
+  char s2[10] = "wmc de";
+  assert(!orderedAlphabetically(s2));
+
+  char s4[10] = "abc";
+  assert(orderedAlphabetically(s4));
+
+  char s5[30] = "athbe breg cjjyjh";
+  assert(orderedAlphabetically(s5));
+
+}
 
 void test() {
     test_strlen_();
@@ -278,15 +310,15 @@ void test() {
     test_findSpace();
     test_findNonSpaceReverse();
     test_findSpaceReverse();
-    test_strcmp_allFalse();
-    test_strcmp_True();
-    test_strcmp_FalseNegative();
-    test_strcmp_2WordsTrue();
-    test_strcmp_2WordsFalse();
-    test_copy_1Symbol();
-    test_copy_World();
-    test_copy_2World();
-    test_copyIf_World();
+   test_strcmp_allFalse();
+   test_strcmp_True();
+   test_strcmp_FalseNegative();
+   test_strcmp_2WordsTrue();
+   test_strcmp_2WordsFalse();
+   test_copy_1Symbol();
+   test_copy_World();
+   test_copy_2World();
+   test_copyIf_World();
     test_copyIf_Symbol();
     test_copyIf_2World();
     test_copyIfReverse_World();
@@ -297,7 +329,7 @@ void test() {
     test_spaceInsteadOfNumber();
     test_replace();
     test_strcmpForWorld();
-
+    test_orderedAlphabetically();
 }
 
 int main() {

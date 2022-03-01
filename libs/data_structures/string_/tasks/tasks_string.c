@@ -160,9 +160,45 @@ void replace(char *source, char *w1, char *w2) {
         } else {
             recPtr = copy(word.begin, word.end, recPtr);
         }
-        *recPtr=' ';
+        *recPtr = ' ';
         recPtr++;
         readPtr = word.end;
     }
     *recPtr = '\0';
+}
+
+int orderedAlphabetically(char *s) {
+    char *begin = s;
+    char *beginWord1=_stringBuffer;
+    char *beginWord2;
+
+    WordDescriptor word1;
+    WordDescriptor word2;
+
+    if (!getWord(begin, &word1))
+        return 1;
+    char *endWord1=copy(word1.begin, word1.end, beginWord1);
+    *endWord1='\0';
+
+    while (getWord(begin, &word2)) {
+        beginWord2= endWord1 + 1;
+        char *endWord2=copy(word2.begin, word2.end, beginWord2);
+        *endWord2='\0';
+        if (strcmp(beginWord1,beginWord2)>0)
+            return 0;
+        word1.end = word2.end;
+        word1.begin = word2.begin;
+        endWord1=copy(word2.begin, word2.end, beginWord1);
+        begin=word2.end;
+    }
+
+    return 1;
+}
+
+int  numberPalindromeWords(char *s){
+    char *left=s;
+    char *right= getEndOfString(s)-1;
+    while (left!=right){
+
+    }
 }
