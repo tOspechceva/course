@@ -169,7 +169,7 @@ void replace(char *source, char *w1, char *w2) {
 
 int orderedAlphabetically(char *s) {
     char *begin = s;
-    char *beginWord1=_stringBuffer;
+    char *beginWord1 = _stringBuffer;
     char *beginWord2;
 
     WordDescriptor word1;
@@ -177,28 +177,65 @@ int orderedAlphabetically(char *s) {
 
     if (!getWord(begin, &word1))
         return 1;
-    char *endWord1=copy(word1.begin, word1.end, beginWord1);
-    *endWord1='\0';
+    char *endWord1 = copy(word1.begin, word1.end, beginWord1);
+    *endWord1 = '\0';
 
     while (getWord(begin, &word2)) {
-        beginWord2= endWord1 + 1;
-        char *endWord2=copy(word2.begin, word2.end, beginWord2);
-        *endWord2='\0';
-        if (strcmp(beginWord1,beginWord2)>0)
+        beginWord2 = endWord1 + 1;
+        char *endWord2 = copy(word2.begin, word2.end, beginWord2);
+        *endWord2 = '\0';
+        if (strcmp(beginWord1, beginWord2) > 0)
             return 0;
         word1.end = word2.end;
         word1.begin = word2.begin;
-        endWord1=copy(word2.begin, word2.end, beginWord1);
-        begin=word2.end;
+        endWord1 = copy(word2.begin, word2.end, beginWord1);
+        begin = word2.end;
     }
 
     return 1;
 }
 
-int  numberPalindromeWords(char *s){
-    char *left=s;
-    char *right= getEndOfString(s)-1;
-    while (left!=right){
-
+int isPalindromeWords(WordDescriptor w) {
+    char *left = w.begin;
+    char *right = w.end - 1;
+    while (right - left > 0) {
+        if (*(left) != *(right))
+            return 0;
+        right--;
+        left++;
     }
+    return 1;
+}
+
+char *findSpace_(char *begin) {
+    char *end = begin;
+    while (*end != '\0') {
+        if (*end == ',')
+            return end;
+        end++;
+    }
+
+    return end;
+}
+
+int getWord_(char *beginSearch, WordDescriptor *word) {
+    word->begin = findNonSpace(beginSearch);
+
+    if (*word->begin == '\0')
+        return 0;
+    word->end = findSpace_(word->begin);
+
+    return 1;
+}
+
+int numberPalindromeWords(char *s) {
+    char *begin = s;
+    WordDescriptor word;
+    int number = 0;
+    while (getWord_(begin, &word)) {
+        if (isPalindromeWords(word))
+            number++;
+        begin = word.end + 1;
+    }
+    return number;
 }

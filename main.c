@@ -286,20 +286,46 @@ void test_strcmpForWorld() {
 
 
 void test_orderedAlphabetically() {
-   char s[10] = "a b c d";
-   assert(orderedAlphabetically(s));
+    char s[10] = "a b c d";
+    assert(orderedAlphabetically(s));
 
-  char s1[10] = " ";
-  assert(orderedAlphabetically(s1));
+    char s1[10] = " ";
+    assert(orderedAlphabetically(s1));
 
-  char s2[10] = "wmc de";
-  assert(!orderedAlphabetically(s2));
+    char s2[10] = "wmc de";
+    assert(!orderedAlphabetically(s2));
 
-  char s4[10] = "abc";
-  assert(orderedAlphabetically(s4));
+    char s4[10] = "abc";
+    assert(orderedAlphabetically(s4));
 
-  char s5[30] = "athbe breg cjjyjh";
-  assert(orderedAlphabetically(s5));
+    char s5[30] = "athbe breg cjjyjh";
+    assert(orderedAlphabetically(s5));
+
+}
+
+void test_isPalindromeWords() {
+    char s[10] = "abccba";
+    WordDescriptor w = {s, s + strlen_(s)};
+    assert(isPalindromeWords(w));
+
+    char s1[10] = "abcecba";
+    WordDescriptor w1 = {s1, s1 + strlen_(s1)};
+    assert(isPalindromeWords(w1));
+
+    char s2[10] = "abrcba";
+    WordDescriptor w2 = {s2, s2 + strlen_(s2)};
+    assert(!isPalindromeWords(w2));
+}
+
+void test_numberPalindromeWords() {
+    char s[10] = "abccba";
+    assert(numberPalindromeWords(s) == 1);
+
+    char s1[100] = "abccba,bswwsb,bingyk";
+    assert(numberPalindromeWords(s1) == 2);
+
+    char s2[100] = "apccba,bswmsb,bingyk";
+    assert(numberPalindromeWords(s2) == 0);
 
 }
 
@@ -310,15 +336,15 @@ void test() {
     test_findSpace();
     test_findNonSpaceReverse();
     test_findSpaceReverse();
-   test_strcmp_allFalse();
-   test_strcmp_True();
-   test_strcmp_FalseNegative();
-   test_strcmp_2WordsTrue();
-   test_strcmp_2WordsFalse();
-   test_copy_1Symbol();
-   test_copy_World();
-   test_copy_2World();
-   test_copyIf_World();
+    test_strcmp_allFalse();
+    test_strcmp_True();
+    test_strcmp_FalseNegative();
+    test_strcmp_2WordsTrue();
+    test_strcmp_2WordsFalse();
+    test_copy_1Symbol();
+    test_copy_World();
+    test_copy_2World();
+    test_copyIf_World();
     test_copyIf_Symbol();
     test_copyIf_2World();
     test_copyIfReverse_World();
@@ -330,6 +356,8 @@ void test() {
     test_replace();
     test_strcmpForWorld();
     test_orderedAlphabetically();
+    test_isPalindromeWords();
+    test_numberPalindromeWords();
 }
 
 int main() {

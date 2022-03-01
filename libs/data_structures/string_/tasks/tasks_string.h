@@ -44,4 +44,8 @@ int strcmpWord(WordDescriptor w1, WordDescriptor w2);
 
 int orderedAlphabetically(char *s);
 
+int isPalindromeWords(WordDescriptor w);
+
+int numberPalindromeWords(char *s);
+
 #endif //COURSE_TASKS_STRING_H
