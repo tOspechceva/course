@@ -361,37 +361,58 @@ void test_alternatingLines() {
     ASSERT_STRING("a b c d e", s13);
 }
 
+void test_copyWordsReverse() {
+    char s1[10] = "c b a";
+    linesReverse(s1);
+    ASSERT_STRING("a b c", s1);
+
+    char s3[10] = "cat dog a";
+    linesReverse(s3);
+    ASSERT_STRING("a dog cat", s3);
+
+    char s7[10] = "b";
+    linesReverse(s7);
+    ASSERT_STRING("b", s7);
+
+    char s[2]="";
+    linesReverse(s);
+    ASSERT_STRING("",s);
+
+}
+
 void test() {
-    test_strlen_();
-    test_find();
-    test_findNonSpace();
-    test_findSpace();
-    test_findNonSpaceReverse();
-    test_findSpaceReverse();
-    test_strcmp_allFalse();
-    test_strcmp_True();
-    test_strcmp_FalseNegative();
-    test_strcmp_2WordsTrue();
-    test_strcmp_2WordsFalse();
-    test_copy_1Symbol();
-    test_copy_World();
-    test_copy_2World();
-    test_copyIf_World();
-    test_copyIf_Symbol();
-    test_copyIf_2World();
-    test_copyIfReverse_World();
-    test_copyIfReverse_2World();
-    test_removeNonLetters();
-    test_removeExtraSpaces();
-    test_reverseWorld();
-    test_spaceInsteadOfNumber();
-    test_replace();
-    test_strcmpForWorld();
-    test_orderedAlphabetically();
-    test_isPalindromeWords();
-    test_numberPalindromeWords();
+    //test_strlen_();
+    //test_find();
+    //test_findNonSpace();
+    //test_findSpace();
+    //test_findNonSpaceReverse();
+    //test_findSpaceReverse();
+    //test_strcmp_allFalse();
+    //test_strcmp_True();
+    //test_strcmp_FalseNegative();
+    //test_strcmp_2WordsTrue();
+    //test_strcmp_2WordsFalse();
+    //test_copy_1Symbol();
+    //test_copy_World();
+    //test_copy_2World();
+    //test_copyIf_World();
+    //test_copyIf_Symbol();
+    //test_copyIf_2World();
+    //test_copyIfReverse_World();
+    //test_copyIfReverse_2World();
+    //test_removeNonLetters();
+    //test_removeExtraSpaces();
+    //test_reverseWorld();
+    //test_spaceInsteadOfNumber();
+    //test_replace();
+    //test_strcmpForWorld();
+    //test_orderedAlphabetically();
+    //test_isPalindromeWords();
+    //test_numberPalindromeWords();
     //test_outputWordsReverse();
-    test_alternatingLines();
+    //test_alternatingLines();
+    test_copyWordsReverse();
+
 }
 
 int main() {

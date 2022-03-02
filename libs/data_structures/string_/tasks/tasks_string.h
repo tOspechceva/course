@@ -62,4 +62,6 @@ void outputWordsReverse(char *s);
 //
 void alternatingLines(char *s1, char *s2, char *s3);
 
+void linesReverse(char *s);
+
 #endif //COURSE_TASKS_STRING_H

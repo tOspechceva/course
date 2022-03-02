@@ -71,7 +71,7 @@ int strcmp(const char *lhs, const char *rhs) {
 
 char *copy(const char *beginSource, const char *endSource, char *beginDestination) {
     char *end = beginSource;
-    while (end < endSource) {
+    while (end != endSource) {
         *beginDestination = *end;
         beginDestination++;
         end++;

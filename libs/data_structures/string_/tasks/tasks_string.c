@@ -277,19 +277,59 @@ void alternatingLines(char *s1, char *s2, char *s3) {
             isW1Found || isW2Found) {
 
         if (isW1Found) {
-            copy(word1.begin, word1.end, copyS3);
+            copyS3 = copy(word1.begin, word1.end, copyS3);
             beginSearch1 = word1.end;
-            copyS3++;
             *copyS3 = ' ';
             copyS3++;
         }
         if (isW2Found) {
-            copy(word2.begin, word2.end, copyS3);
+            copyS3 = copy(word2.begin, word2.end, copyS3);
             beginSearch2 = word2.end;
-            copyS3++;
             *copyS3 = ' ';
             copyS3++;
         }
     }
     *(copyS3 - 1) = '\0';
+}
+
+char *findSpaceEnd(char *end) {
+    char *rBegin = end;
+    while (rBegin != _stringBuffer) {
+        if (isspace(*rBegin))
+            return rBegin;
+        rBegin--;
+    }
+
+    return rBegin;
+}
+
+int getWordEnd(char *beginSearch, WordDescriptor *word) {
+    word->end = findNonSpaceReverse(beginSearch, _stringBuffer);
+
+    if (word->end == _stringBuffer)
+        return 0;
+    word->begin = findSpaceEnd(word->end);
+
+    return 1;
+}
+
+ void linesReverse(char *s) {
+    if (isEmptyString(s)) {
+        return;
+    }
+    char *endBuf = copy(s, getEndOfString(s), _stringBuffer + 1);
+
+    WordDescriptor word;
+    char *begin = s;
+    endBuf--;
+    *_stringBuffer = '\n';
+
+    while (getWordEnd(endBuf, &word)) {
+        begin = copy(word.begin + 1, word.end + 1, begin);
+        *begin = ' ';
+        begin++;
+        endBuf = word.begin;
+    }
+
+    *(begin-1)='\0';
 }
