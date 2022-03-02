@@ -22,8 +22,16 @@ typedef struct BagOfWords {
     size_t size;
 } BagOfWords;
 
-BagOfWords _bag ;
-BagOfWords _bag2 ;
+typedef enum WordBeforeFirstWordWithAReturnCode {
+    FIRST_WORD_WITH_A,
+    NOT_FOUND_A_WORD_WITH_A,
+    WORD_FOUND,
+    EMPTY_STRING
+} WordBeforeFirstWordWithAReturnCode;
+
+
+BagOfWords _bag;
+BagOfWords _bag2;
 
 char _stringBuffer[MAX_STRING_SIZE + 1];
 
@@ -63,5 +71,9 @@ void outputWordsReverse(char *s);
 void alternatingLines(char *s1, char *s2, char *s3);
 
 void linesReverse(char *s);
+
+void printWordBeforeFirstWordWithA(char *s);
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDescriptor *wordBefore);
 
 #endif //COURSE_TASKS_STRING_H

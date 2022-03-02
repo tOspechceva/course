@@ -313,7 +313,7 @@ int getWordEnd(char *beginSearch, WordDescriptor *word) {
     return 1;
 }
 
- void linesReverse(char *s) {
+void linesReverse(char *s) {
     if (isEmptyString(s)) {
         return;
     }
@@ -331,5 +331,73 @@ int getWordEnd(char *beginSearch, WordDescriptor *word) {
         endBuf = word.begin;
     }
 
-    *(begin-1)='\0';
+    *(begin - 1) = '\0';
+}
+
+void *copyWordsReverse(char *s, char *s2) {
+    char *begin = s;
+
+    BagOfWords ws;
+    getBagOfWords(&ws, begin);
+    char *buf = _stringBuffer;
+
+    for (int i = (int) ws.size - 1; i >= 0; --i) {
+        buf = copy(ws.words[i].begin, ws.words[i].end - 1, buf);
+        *buf = ' ';
+        buf++;
+    }
+
+    *(buf - 1) = '\0';
+
+    return copy(_stringBuffer, buf, s2);
+}
+
+bool isLetterA(WordDescriptor w) {
+    char *begin = w.begin;
+
+    while (begin != w.end) {
+        if (*begin == 'a' || *begin == 'A') {
+            return true;
+        }
+        begin++;
+    }
+    return false;
+}
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDescriptor *wordBefore) {
+    WordDescriptor w1;
+    char *begin = s;
+    if (!getWord(begin, &w1)) {
+        return EMPTY_STRING;
+    } else {
+        if (isLetterA(w1))
+            return FIRST_WORD_WITH_A;
+    }
+
+    begin = w1.end;
+    WordDescriptor w2;
+    while (getWord(begin, &w2)) {
+        if (isLetterA(w2)) {
+            wordBefore->begin = w1.begin;
+            wordBefore->end = w1.end;
+            return WORD_FOUND;
+        }
+        w1.begin = w2.begin;
+        w1.end = w2.end;
+        begin = w2.end;
+
+    }
+    return NOT_FOUND_A_WORD_WITH_A;
+}
+
+
+void printWordBeforeFirstWordWithA(char *s) {
+    char *begin = s;
+    WordDescriptor w;
+    WordBeforeFirstWordWithAReturnCode k = getWordBeforeFirstWordWithA(begin, &w);
+    if (k == WORD_FOUND) {
+        char *end = copy(w.begin, w.end, _stringBuffer);
+        *end = '\0';
+        printf("%s", _stringBuffer);
+    }
 }

@@ -374,44 +374,86 @@ void test_copyWordsReverse() {
     linesReverse(s7);
     ASSERT_STRING("b", s7);
 
-    char s[2]="";
+    char s[2] = "";
     linesReverse(s);
-    ASSERT_STRING("",s);
+    ASSERT_STRING("", s);
+}
+
+void testAll_getWordBeforeFirstWordWithA() {
+    WordDescriptor w;
+
+    char s1[] = "";
+    assert (
+            getWordBeforeFirstWordWithA(s1, &w)
+            == EMPTY_STRING
+    );
+    char s2[] = " ABC";
+    assert (
+            getWordBeforeFirstWordWithA(s2, &w)
+            == FIRST_WORD_WITH_A
+    );
+
+    char s3[] = "BC A";
+    assert (
+            getWordBeforeFirstWordWithA(s3, &w)
+            == WORD_FOUND
+    );
+
+    char got[MAX_WORD_SIZE];
+    char *end = copy(w.begin, w.end, got);
+    *end = '\0';
+    ASSERT_STRING ("BC", got);
+
+    char s4[] = "B Q WE YR OW IUWR ";
+    assert (getWordBeforeFirstWordWithA(s4, &w) == NOT_FOUND_A_WORD_WITH_A);
+
+    char s5[] = "BC nm A";
+    assert (
+            getWordBeforeFirstWordWithA(s5, &w)
+            == WORD_FOUND
+    );
+
+    char got1[MAX_WORD_SIZE];
+    char *end1 = copy(w.begin, w.end, got1);
+    *end1 = '\0';
+    ASSERT_STRING ("nm", got1);
 
 }
 
+
 void test() {
-    //test_strlen_();
-    //test_find();
-    //test_findNonSpace();
-    //test_findSpace();
-    //test_findNonSpaceReverse();
-    //test_findSpaceReverse();
-    //test_strcmp_allFalse();
-    //test_strcmp_True();
-    //test_strcmp_FalseNegative();
-    //test_strcmp_2WordsTrue();
-    //test_strcmp_2WordsFalse();
-    //test_copy_1Symbol();
-    //test_copy_World();
-    //test_copy_2World();
-    //test_copyIf_World();
-    //test_copyIf_Symbol();
-    //test_copyIf_2World();
-    //test_copyIfReverse_World();
-    //test_copyIfReverse_2World();
-    //test_removeNonLetters();
-    //test_removeExtraSpaces();
-    //test_reverseWorld();
-    //test_spaceInsteadOfNumber();
-    //test_replace();
-    //test_strcmpForWorld();
-    //test_orderedAlphabetically();
-    //test_isPalindromeWords();
-    //test_numberPalindromeWords();
+    test_strlen_();
+    test_find();
+    test_findNonSpace();
+    test_findSpace();
+    test_findNonSpaceReverse();
+    test_findSpaceReverse();
+    test_strcmp_allFalse();
+    test_strcmp_True();
+    test_strcmp_FalseNegative();
+    test_strcmp_2WordsTrue();
+    test_strcmp_2WordsFalse();
+    test_copy_1Symbol();
+    test_copy_World();
+    test_copy_2World();
+    test_copyIf_World();
+    test_copyIf_Symbol();
+    test_copyIf_2World();
+    test_copyIfReverse_World();
+    test_copyIfReverse_2World();
+    test_removeNonLetters();
+    test_removeExtraSpaces();
+    test_reverseWorld();
+    test_spaceInsteadOfNumber();
+    test_replace();
+    test_strcmpForWorld();
+    test_orderedAlphabetically();
+    test_isPalindromeWords();
+    test_numberPalindromeWords();
     //test_outputWordsReverse();
-    //test_alternatingLines();
+    test_alternatingLines();
     test_copyWordsReverse();
+    testAll_getWordBeforeFirstWordWithA();
 
 }
 
