@@ -18,12 +18,6 @@ void removeNonLetters(char *s) {
     *destination = '\0';
 }
 
-char *countExtraSpaces(char *begin, char *end) {
-    while (begin != end && isspace(*begin)) {
-        begin++;
-    }
-    return begin;
-}
 
 void removeExtraSpaces(char *s) {
     char *iRead = s;
@@ -53,12 +47,6 @@ void removeExtraSpaces(char *s) {
     *iWrite = '\0';
 }
 
-void digitToStart(WordDescriptor word) {
-    char *endStringBuffer = copy(word.begin, word.end, _stringBuffer);
-    char *recPosition = copyIfReverse(endStringBuffer - 1, _stringBuffer - 1, word.begin, isdigit);
-
-    copyIf(_stringBuffer, endStringBuffer, recPosition, isalpha);
-}
 
 int getWord(char *beginSearch, WordDescriptor *word) {
     word->begin = findNonSpace(beginSearch);
@@ -238,4 +226,29 @@ int numberPalindromeWords(char *s) {
         begin = word.end + 1;
     }
     return number;
+}
+
+void getBagOfWords(BagOfWords *ws, char *s) {
+    WordDescriptor w;
+    ws->size = 0;
+    while (getWord(s, &w)) {
+        ws->words[ws->size].begin = w.begin;
+        ws->words[ws->size].end = w.end;
+        *(ws->words[ws->size].end) = '\0';
+        ws->words[ws->size].end++;
+        ws->size++;
+        s = w.end + 1;
+    }
+}
+
+void outputWordsReverse(char *s) {
+    char *begin = s;
+
+    BagOfWords ws;
+    getBagOfWords(&ws, begin);
+
+    for (int i = (int) ws.size - 1; i >= 0; --i) {
+        printf("%s", ws.words[i].begin);
+        printf("\n");
+    }
 }

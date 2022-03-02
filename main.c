@@ -259,8 +259,6 @@ void test_replace() {
     char s4[100] = "i love cat and cat";
     replace(s4, "cat", "sweet");
     ASSERT_STRING("i love sweet and sweet ", s4);
-
-
 }
 
 
@@ -327,6 +325,16 @@ void test_numberPalindromeWords() {
     char s2[100] = "apccba,bswmsb,bingyk";
     assert(numberPalindromeWords(s2) == 0);
 
+    char s3[1] = "";
+    assert(numberPalindromeWords(s3) == 0);
+}
+
+
+
+void test_outputWordsReverse(){
+    char s[45]="amb sjh dnhk fkhn glkl";
+
+    outputWordsReverse(s);
 }
 
 void test() {
@@ -358,6 +366,7 @@ void test() {
     test_orderedAlphabetically();
     test_isPalindromeWords();
     test_numberPalindromeWords();
+    //test_outputWordsReverse();
 }
 
 int main() {
