@@ -252,3 +252,44 @@ void outputWordsReverse(char *s) {
         printf("\n");
     }
 }
+
+bool isEmptyString(char *s) {
+    while (*s != '\0') {
+        if (!isspace(*s))
+            return false;
+    }
+    return true;
+}
+
+void alternatingLines(char *s1, char *s2, char *s3) {
+    if (isEmptyString(s1) && isEmptyString(s2)) {
+        return;
+    }
+    char *beginSearch1 = s1;
+    char *beginSearch2 = s2;
+    char *copyS3 = s3;
+
+    WordDescriptor word1, word2;
+    bool isW1Found, isW2Found;
+
+    while ((isW1Found = getWord(beginSearch1, &word1)),
+            (isW2Found = getWord(beginSearch2, &word2)),
+            isW1Found || isW2Found) {
+
+        if (isW1Found) {
+            copy(word1.begin, word1.end, copyS3);
+            beginSearch1 = word1.end;
+            copyS3++;
+            *copyS3 = ' ';
+            copyS3++;
+        }
+        if (isW2Found) {
+            copy(word2.begin, word2.end, copyS3);
+            beginSearch2 = word2.end;
+            copyS3++;
+            *copyS3 = ' ';
+            copyS3++;
+        }
+    }
+    *(copyS3 - 1) = '\0';
+}

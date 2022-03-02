@@ -329,12 +329,36 @@ void test_numberPalindromeWords() {
     assert(numberPalindromeWords(s3) == 0);
 }
 
-
-
-void test_outputWordsReverse(){
-    char s[45]="amb sjh dnhk fkhn glkl";
+void test_outputWordsReverse() {
+    char s[45] = "amb sjh dnhk fkhn glkl";
 
     outputWordsReverse(s);
+}
+
+void test_alternatingLines() {
+    char s1[10] = "a c e";
+    char s2[10] = "b d ";
+    char s3[20];
+    alternatingLines(s1, s2, s3);
+    ASSERT_STRING("a b c d e", s3);
+
+    char s4[10] = "";
+    char s5[10] = "b d";
+    char s6[20];
+    alternatingLines(s4, s5, s6);
+    ASSERT_STRING("b d", s6);
+
+    char s7[10] = "";
+    char s8[10] = "";
+    char s9[20];
+    alternatingLines(s7, s8, s9);
+    ASSERT_STRING("", s9);
+
+    char s11[10] = "a c";
+    char s12[10] = "b d e";
+    char s13[20];
+    alternatingLines(s11, s12, s13);
+    ASSERT_STRING("a b c d e", s13);
 }
 
 void test() {
@@ -367,6 +391,7 @@ void test() {
     test_isPalindromeWords();
     test_numberPalindromeWords();
     //test_outputWordsReverse();
+    test_alternatingLines();
 }
 
 int main() {

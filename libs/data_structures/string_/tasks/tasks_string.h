@@ -59,4 +59,7 @@ int numberPalindromeWords(char *s);
 
 void outputWordsReverse(char *s);
 
+//
+void alternatingLines(char *s1, char *s2, char *s3);
+
 #endif //COURSE_TASKS_STRING_H
