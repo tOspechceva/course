@@ -440,17 +440,31 @@ void test_lastWordInFirstStringInSecondString() {
 }
 
 void test_identicalWordsLine(){
-    char s[100]="cat cat";
-    assert(identicalWordsLine(s));
+   char s[100]="cat cat";
+   assert(identicalWordsLine(s));
 
-    char s1[100]="cat dog milk cat";
-    assert(identicalWordsLine(s1));
+   char s1[100]="cat dog milk cat";
+   assert(identicalWordsLine(s1));
 
-    char s2[100]="cat";
-    assert(identicalWordsLine(s2));
+   char s2[100]="cat";
+   assert(!identicalWordsLine(s2));
 
     char s3[100]="cat dog milk";
-    assert(identicalWordsLine(s3));
+    assert(!identicalWordsLine(s3));
+}
+
+void test_wordsMadeIdenticalLetters(){
+    char s1[100]="cat cat";
+    assert(wordsMadeIdenticalLetters(s1));
+
+    char s2[100]="cta cat";
+    assert(wordsMadeIdenticalLetters(s2));
+
+    char s3[100]="cat dog milk cta";
+    assert(wordsMadeIdenticalLetters(s3));
+
+    char s4[100]="cat dog milk ctr";
+    assert(!wordsMadeIdenticalLetters(s4));
 }
 
 void test() {
@@ -488,6 +502,8 @@ void test() {
     testAll_getWordBeforeFirstWordWithA();
     //test_lastWordInFirstStringInSecondString();
     test_identicalWordsLine();
+
+    test_wordsMadeIdenticalLetters();
 
 
 }

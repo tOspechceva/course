@@ -82,4 +82,6 @@ WordDescriptor lastWordInFirstStringInSecondString(char *s1, char *s2);
 
 bool identicalWordsLine(char *s);
 
+bool wordsMadeIdenticalLetters(char *s);
+
 #endif //COURSE_TASKS_STRING_H

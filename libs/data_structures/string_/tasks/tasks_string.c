@@ -403,30 +403,30 @@ void printWordBeforeFirstWordWithA(char *s) {
     }
 }
 
-//void getBagOfWords_(BagOfWords *ws, char *s) {
-//    WordDescriptor w;
-//    ws->size = 0;
-//    char *end = copy(s, getEndOfString(s), _stringBuffer);
-//    char *begin = _stringBuffer;
-//    *end = '\0';
-//    end++;
-//    *end = '\0';
-//    while (getWord(begin, &w)) {
-//        ws->words[ws->size].begin = w.begin;
-//        ws->words[ws->size].end = w.end;
-//        *(ws->words[ws->size].end) = '\0';
-//        ws->words[ws->size].end++;
-//        ws->size++;
-//
-//        begin = w.end + 1;
-//
-//    }
-//}
-//
-//void wordDescriptorToString(WordDescriptor w, char *destination) {
-//    char *end = copy(w.begin, w.end, destination);
-//    *end = '\0';
-//}
+void getBagOfWords_(BagOfWords *ws, char *s) {
+    WordDescriptor w;
+    ws->size = 0;
+    char *end = copy(s, getEndOfString(s), _stringBuffer);
+    char *begin = _stringBuffer;
+    *end = ' ';
+    end++;
+    *end = '\0';
+    while (getWord(begin, &w)) {
+        ws->words[ws->size].begin = w.begin;
+        ws->words[ws->size].end = w.end;
+        *(ws->words[ws->size].end) = '\0';
+        ws->words[ws->size].end++;
+        ws->size++;
+
+        begin = w.end + 1;
+
+    }
+}
+
+void wordDescriptorToString(WordDescriptor w, char *destination) {
+    char *end = copy(w.begin, w.end, destination);
+    *end = '\0';
+}
 //
 //WordDescriptor lastWordInFirstStringInSecondString(char *s1, char *s2) {
 //    BagOfWords bag1;
@@ -452,7 +452,7 @@ bool identicalWordsLine(char *s) {
     char *begin = _stringBuffer;
 
     BagOfWords ws;
-    getBagOfWords(&ws,begin);
+    getBagOfWords_(&ws, begin);
     for (int i = 0; i < ws.size; ++i) {
         for (int j = i + 1; j < ws.size; ++j) {
             if (strcmp(ws.words[i].begin, ws.words[j].begin) == 0) {
@@ -464,6 +464,40 @@ bool identicalWordsLine(char *s) {
     return false;
 }
 
+int compare_char(const void *a, const void *b) {
+    char arg1 = *(const char *) a;
+    char arg2 = *(const char *) b;
 
+    if (arg1 < arg2) return -1;
+    if (arg1 > arg2) return 1;
+    return 0;
+}
+
+void sortLetters(WordDescriptor w) {
+    int numberLettersWord = strlen_(w.begin);
+    qsort(w.begin, numberLettersWord, sizeof(char), compare_char);
+}
+
+bool wordsMadeIdenticalLetters(char *s) {
+    char *end = copy(s, getEndOfString(s), _stringBuffer);
+    *end = '\0';
+    char *begin = _stringBuffer;
+
+    BagOfWords ws;
+    getBagOfWords(&ws, begin);
+    for (int i = 0; i < ws.size; ++i) {
+        sortLetters(ws.words[i]);
+    }
+    char s1[MAX_STRING_SIZE];
+    char *begin1 =s1;
+    char *end1;
+    for (int i = 0; i < ws.size; ++i) {
+        end1= copy(ws.words[i].begin, ws.words[i].end, begin1);
+        *(end1-1)=' ';
+        begin1=end1;
+    }
+    *(end1)='\0';
+    return identicalWordsLine(s1);
+}
 
 
