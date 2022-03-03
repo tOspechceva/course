@@ -76,4 +76,10 @@ void printWordBeforeFirstWordWithA(char *s);
 
 WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDescriptor *wordBefore);
 
+void wordDescriptorToString(WordDescriptor w, char *destination);
+
+WordDescriptor lastWordInFirstStringInSecondString(char *s1, char *s2);
+
+bool identicalWordsLine(char *s);
+
 #endif //COURSE_TASKS_STRING_H
