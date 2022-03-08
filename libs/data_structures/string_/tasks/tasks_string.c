@@ -414,24 +414,61 @@ void wordDescriptorToString(WordDescriptor w, char *destination) {
     char *end = copy(w.begin, w.end, destination);
     *end = '\0';
 }
-//
-//WordDescriptor lastWordInFirstStringInSecondString(char *s1, char *s2) {
-//    BagOfWords bag1;
-//    getBagOfWords(&bag1, s1);
-//
-//    BagOfWords bag2;
-//    getBagOfWords(&bag2, s2);
-//
-//    WordDescriptor w;
-//    for (int j = 0; j < bag1.size; j++) {
-//        for (int i = 0; i < bag2.size; i++) {
-//            if (strcmp(bag1.words[j].begin, bag2.words[i].begin) == 0) {
-//                w.begin = bag1.words[j].begin, w.end = bag1.words[j].end;
-//            }
-//        }
-//    }
-//    return w;
-//}
+
+void getBagOf2Words(BagOfWords *ws, char *s, BagOfWords *ws1, char *s1) {
+    WordDescriptor w1;
+    ws1->size = 0;
+    char *end1 = copy(s1, getEndOfString(s1), _stringBuffer);
+    char *begin1 = _stringBuffer;
+    *end1 = ' ';
+    end1++;
+    *end1 = '\0';
+    while (getWord(begin1, &w1)) {
+        ws1->words[ws1->size].begin = w1.begin;
+        ws1->words[ws1->size].end = w1.end;
+        *(ws1->words[ws1->size].end) = '\0';
+        ws1->words[ws1->size].end++;
+        ws1->size++;
+
+        begin1 = w1.end + 1;
+
+    }
+
+    WordDescriptor w;
+    ws->size = 0;
+    char *end = copy(s, getEndOfString(s), end1 + 1);
+    char *begin = end1 + 1;
+    *end = ' ';
+    end++;
+    *end = '\0';
+    while (getWord(begin, &w)) {
+        ws->words[ws->size].begin = w.begin;
+        ws->words[ws->size].end = w.end;
+        *(ws->words[ws->size].end) = '\0';
+        ws->words[ws->size].end++;
+        ws->size++;
+
+        begin = w.end + 1;
+
+    }
+}
+
+WordDescriptor lastWordInFirstStringInSecondString(char *s1, char *s2) {
+    BagOfWords bag1;
+
+    BagOfWords bag2;
+    getBagOf2Words(&bag1, s1, &bag2, s2);
+
+    WordDescriptor w;
+    for (int j = 0; j < bag1.size; j++) {
+        for (int i = 0; i < bag2.size; i++) {
+            if (strcmp(bag1.words[j].begin, bag2.words[i].begin) == 0) {
+                w.begin = bag1.words[j].begin, w.end = bag1.words[j].end;
+            }
+        }
+    }
+    return w;
+}
 
 bool identicalWordsLine(char *s) {
     char *end = copy(s, getEndOfString(s), _stringBuffer);
@@ -517,11 +554,20 @@ void allExceptLastOne(char *s) {
 }
 
 char *precedingFirstOccurrence(char *s1, char *s2) {
+    char s3[MAX_STRING_SIZE];
+    char *begin1 = s3;
+    char *end1 = copy(s1, getEndOfString(s1), begin1);
+    *end1 = '\0';
+
+    char *begin2 = end1 + 1;
+    char *end2 = copy(s2, getEndOfString(s2), begin2);
+    *end2 = '\0';
+
     BagOfWords bag1;
-    getBagOfWords(&bag1, s1);
 
     BagOfWords bag2;
-    getBagOfWords(&bag2, s2);
+    getBagOf2Words(&bag1, s1, &bag2, s2);
+
 }
 
 
