@@ -421,21 +421,21 @@ void testAll_getWordBeforeFirstWordWithA() {
 }
 
 void test_lastWordInFirstStringInSecondString() {
-    //char string[20];
-    //char s1[10] = "q w ";
-    //char s2[10] = "a w";
-    //WordDescriptor word =
-    //        lastWordInFirstStringInSecondString(s1, s2);
-    //wordDescriptorToString(word, string);
-    //ASSERT_STRING ("w", string);
+    char string[20];
+    char s1[10] = "q w ";
+    char s2[10] = "a w";
+    WordDescriptor word =
+            lastWordInFirstStringInSecondString(s1, s2);
+    wordDescriptorToString(word, string);
+    ASSERT_STRING ("w", string);
 
-  // char string1[20];
-  // char s3[10] = "cat sweet";
-  // char s4[10] = "milk cat";
-  // WordDescriptor word1 =
-  //         lastWordInFirstStringInSecondString(s3, s4);
-  // wordDescriptorToString(word1, string1);
-  // ASSERT_STRING ("cat", string1);
+   char string1[20];
+   char s3[10] = "cat sweet";
+   char s4[10] = "milk cat";
+   WordDescriptor word1 =
+           lastWordInFirstStringInSecondString(s3, s4);
+   wordDescriptorToString(word1, string1);
+   ASSERT_STRING ("cat", string1);
 
 }
 
@@ -517,7 +517,7 @@ void test() {
     test_alternatingLines();
     test_copyWordsReverse();
     testAll_getWordBeforeFirstWordWithA();
-    //test_lastWordInFirstStringInSecondString();
+    test_lastWordInFirstStringInSecondString();
     test_identicalWordsLine();
     test_wordsMadeIdenticalLetters();
     test_allExceptLastOne();
