@@ -512,11 +512,37 @@ void test_deletePalindromeWords(){
     deletePalindromeWords(s2);
     ASSERT_STRING("",s2);
 
-    char s2[100] = "cat";
-    deletePalindromeWords(s2);
-    ASSERT_STRING("cat",s2);
-
+    char s3[100] = "cat";
+    deletePalindromeWords(s3);
+    ASSERT_STRING("cat",s3);
 }
+
+void test_stringAddition(){
+    char s1[100]="a b c";
+    char s2[100]="d e f g k l";
+    stringAddition(s1,s2);
+    ASSERT_STRING("a b c g k l",s1);
+    ASSERT_STRING("d e f g k l",s2);
+
+    char s3[100]="a b c";
+    char s4[100]="d e f g k l";
+    stringAddition(s4,s3);
+    ASSERT_STRING("a b c g k l",s3);
+    ASSERT_STRING("d e f g k l",s4);
+
+    char s5[100]="a b c";
+    char s6[100]="";
+    stringAddition(s5,s6);
+    ASSERT_STRING("a b c",s5);
+    ASSERT_STRING(" a b c",s6);
+
+    char s7[100]="";
+    char s8[100]="";
+    stringAddition(s7,s8);
+    ASSERT_STRING("",s7);
+    ASSERT_STRING("",s8);
+}
+
 void test() {
     test_strlen_();
     test_find();
@@ -556,6 +582,7 @@ void test() {
     test_allExceptLastOne();
     test_precedingFirstOccurrence();
     test_deletePalindromeWords();
+    test_stringAddition();
 }
 
 int main() {

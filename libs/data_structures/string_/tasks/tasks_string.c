@@ -598,23 +598,32 @@ void stringAddition(char *s1, char *s2) {
     getBagOf2Words(&bag1, s1, &bag2, s2);
     if (bag1.size > bag2.size) {
         char *begin1= getEndOfString(s2);
+        *begin1= ' ';
+        begin1++;
         for (int i = (int)bag2.size; i <  bag1.size; ++i) {
-            char *end1=copy(bag1.words[i].begin,bag1.words[i].begin,begin1);
+            char *end1=copy(bag1.words[i].begin,bag1.words[i].end,begin1);
             end1--;
             *end1 = ' ';
             end1++;
             begin1=end1;
         }
+        if (begin1 != s2)
+            begin1--;
         *begin1='\0';
+
     } else {
         char *begin1= getEndOfString(s1);
+        *begin1= ' ';
+        begin1++;
         for (int i = (int)bag1.size; i <  bag2.size; ++i) {
-            char *end1=copy(bag2.words[i].begin,bag2.words[i].begin,begin1);
+            char *end1 = copy(bag2.words[i].begin, bag2.words[i].end, begin1);
             end1--;
             *end1 = ' ';
             end1++;
-            begin1=end1;
+            begin1 = end1;
         }
+        if (begin1 != s1)
+            begin1--;
         *begin1='\0';
     }
 

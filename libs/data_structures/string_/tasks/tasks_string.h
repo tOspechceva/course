@@ -90,4 +90,6 @@ WordDescriptor precedingFirstOccurrence(char *s1, char *s2);
 
 void deletePalindromeWords(char *s);
 
+void stringAddition(char *s1, char *s2);
+
 #endif //COURSE_TASKS_STRING_H
