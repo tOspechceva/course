@@ -467,6 +467,23 @@ void test_wordsMadeIdenticalLetters(){
     assert(!wordsMadeIdenticalLetters(s4));
 }
 
+void test_allExceptLastOne(){
+    char s1[100]="cat cat";
+    allExceptLastOne(s1);
+    ASSERT_STRING("",s1);
+
+    char s2[100]="cat milk cat";
+    allExceptLastOne(s2);
+    ASSERT_STRING("milk",s2);
+
+    char s3[100]="cat dog cat milk";
+    allExceptLastOne(s3);
+    ASSERT_STRING("cat dog cat",s3);
+
+    char s4[2]="";
+    allExceptLastOne(s4);
+    ASSERT_STRING("",s4);
+}
 void test() {
     test_strlen_();
     test_find();
@@ -502,10 +519,8 @@ void test() {
     testAll_getWordBeforeFirstWordWithA();
     //test_lastWordInFirstStringInSecondString();
     test_identicalWordsLine();
-
     test_wordsMadeIdenticalLetters();
-
-
+    test_allExceptLastOne();
 }
 
 int main() {
