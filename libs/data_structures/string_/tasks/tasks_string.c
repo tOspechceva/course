@@ -183,16 +183,16 @@ int orderedAlphabetically(char *s) {
     return 1;
 }
 
-int isPalindromeWords(WordDescriptor w) {
+bool isPalindromeWords(WordDescriptor w) {
     char *left = w.begin;
     char *right = w.end - 1;
     while (right - left > 0) {
         if (*(left) != *(right))
-            return 0;
+            return false;
         right--;
         left++;
     }
-    return 1;
+    return right;
 }
 
 char *findSpace_(char *begin) {
@@ -567,5 +567,59 @@ WordDescriptor precedingFirstOccurrence(char *s1, char *s2) {
         }
     }
 }
+
+void deletePalindromeWords(char *s) {
+    char *end = copy(s, getEndOfString(s), _stringBuffer);
+    *end = '\0';
+    char *begin = _stringBuffer;
+
+    BagOfWords ws;
+    getBagOfWords(&ws, begin);
+    char *beginS = s;
+    for (int i = 0; i < ws.size; ++i) {
+        ws.words[i].end--;
+        if (!isPalindromeWords(ws.words[i])) {
+            ws.words[i].end++;
+            char *endS = copy(ws.words[i].begin, ws.words[i].end, beginS);
+            endS--;
+            *endS = ' ';
+            endS++;
+            beginS = endS;
+        }
+    }
+    if (beginS != s)
+        beginS--;
+    *beginS = '\0';
+}
+
+void stringAddition(char *s1, char *s2) {
+    BagOfWords bag1;
+    BagOfWords bag2;
+    getBagOf2Words(&bag1, s1, &bag2, s2);
+    if (bag1.size > bag2.size) {
+        char *begin1= getEndOfString(s2);
+        for (int i = (int)bag2.size; i <  bag1.size; ++i) {
+            char *end1=copy(bag1.words[i].begin,bag1.words[i].begin,begin1);
+            end1--;
+            *end1 = ' ';
+            end1++;
+            begin1=end1;
+        }
+        *begin1='\0';
+    } else {
+        char *begin1= getEndOfString(s1);
+        for (int i = (int)bag1.size; i <  bag2.size; ++i) {
+            char *end1=copy(bag2.words[i].begin,bag2.words[i].begin,begin1);
+            end1--;
+            *end1 = ' ';
+            end1++;
+            begin1=end1;
+        }
+        *begin1='\0';
+    }
+
+}
+
+
 
 

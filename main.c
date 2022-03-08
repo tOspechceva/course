@@ -503,7 +503,20 @@ void test_precedingFirstOccurrence(){
     ASSERT_STRING ("cat", string1);
 }
 
+void test_deletePalindromeWords(){
+    char s1[100] = "abcecba cat";
+    deletePalindromeWords(s1);
+    ASSERT_STRING("cat",s1);
 
+    char s2[100] = "";
+    deletePalindromeWords(s2);
+    ASSERT_STRING("",s2);
+
+    char s2[100] = "cat";
+    deletePalindromeWords(s2);
+    ASSERT_STRING("cat",s2);
+
+}
 void test() {
     test_strlen_();
     test_find();
@@ -542,6 +555,7 @@ void test() {
     test_wordsMadeIdenticalLetters();
     test_allExceptLastOne();
     test_precedingFirstOccurrence();
+    test_deletePalindromeWords();
 }
 
 int main() {

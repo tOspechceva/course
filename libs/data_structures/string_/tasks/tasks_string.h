@@ -60,7 +60,7 @@ int strcmpWord(WordDescriptor w1, WordDescriptor w2);
 int orderedAlphabetically(char *s);
 
 //Проверяет, является ли слово палиндромом.
-int isPalindromeWords(WordDescriptor w);
+bool isPalindromeWords(WordDescriptor w);
 
 //Определяет количество слов-палиндромов.
 int numberPalindromeWords(char *s);
@@ -87,5 +87,7 @@ bool wordsMadeIdenticalLetters(char *s);
 void allExceptLastOne(char *s);
 
 WordDescriptor precedingFirstOccurrence(char *s1, char *s2);
+
+void deletePalindromeWords(char *s);
 
 #endif //COURSE_TASKS_STRING_H
