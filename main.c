@@ -429,63 +429,63 @@ void test_lastWordInFirstStringInSecondString() {
     wordDescriptorToString(word, string);
     ASSERT_STRING ("w", string);
 
-   char string1[20];
-   char s3[10] = "cat sweet";
-   char s4[10] = "milk cat";
-   WordDescriptor word1 =
-           lastWordInFirstStringInSecondString(s3, s4);
-   wordDescriptorToString(word1, string1);
-   ASSERT_STRING ("cat", string1);
+    char string1[20];
+    char s3[10] = "cat sweet";
+    char s4[10] = "milk cat";
+    WordDescriptor word1 =
+            lastWordInFirstStringInSecondString(s3, s4);
+    wordDescriptorToString(word1, string1);
+    ASSERT_STRING ("cat", string1);
 
 }
 
-void test_identicalWordsLine(){
-   char s[100]="cat cat";
-   assert(identicalWordsLine(s));
+void test_identicalWordsLine() {
+    char s[100] = "cat cat";
+    assert(identicalWordsLine(s));
 
-   char s1[100]="cat dog milk cat";
-   assert(identicalWordsLine(s1));
+    char s1[100] = "cat dog milk cat";
+    assert(identicalWordsLine(s1));
 
-   char s2[100]="cat";
-   assert(!identicalWordsLine(s2));
+    char s2[100] = "cat";
+    assert(!identicalWordsLine(s2));
 
-    char s3[100]="cat dog milk";
+    char s3[100] = "cat dog milk";
     assert(!identicalWordsLine(s3));
 }
 
-void test_wordsMadeIdenticalLetters(){
-    char s1[100]="cat cat";
+void test_wordsMadeIdenticalLetters() {
+    char s1[100] = "cat cat";
     assert(wordsMadeIdenticalLetters(s1));
 
-    char s2[100]="cta cat";
+    char s2[100] = "cta cat";
     assert(wordsMadeIdenticalLetters(s2));
 
-    char s3[100]="cat dog milk cta";
+    char s3[100] = "cat dog milk cta";
     assert(wordsMadeIdenticalLetters(s3));
 
-    char s4[100]="cat dog milk ctr";
+    char s4[100] = "cat dog milk ctr";
     assert(!wordsMadeIdenticalLetters(s4));
 }
 
-void test_allExceptLastOne(){
-    char s1[100]="cat cat";
+void test_allExceptLastOne() {
+    char s1[100] = "cat cat";
     allExceptLastOne(s1);
-    ASSERT_STRING("",s1);
+    ASSERT_STRING("", s1);
 
-    char s2[100]="cat milk cat";
+    char s2[100] = "cat milk cat";
     allExceptLastOne(s2);
-    ASSERT_STRING("milk",s2);
+    ASSERT_STRING("milk", s2);
 
-    char s3[100]="cat dog cat milk";
+    char s3[100] = "cat dog cat milk";
     allExceptLastOne(s3);
-    ASSERT_STRING("cat dog cat",s3);
+    ASSERT_STRING("cat dog cat", s3);
 
-    char s4[2]="";
+    char s4[2] = "";
     allExceptLastOne(s4);
-    ASSERT_STRING("",s4);
+    ASSERT_STRING("", s4);
 }
 
-void test_precedingFirstOccurrence(){
+void test_precedingFirstOccurrence() {
     char string[20];
     char s1[10] = "q w ";
     char s2[10] = "a w";
@@ -503,44 +503,51 @@ void test_precedingFirstOccurrence(){
     ASSERT_STRING ("cat", string1);
 }
 
-void test_deletePalindromeWords(){
+void test_deletePalindromeWords() {
     char s1[100] = "abcecba cat";
     deletePalindromeWords(s1);
-    ASSERT_STRING("cat",s1);
+    ASSERT_STRING("cat", s1);
 
     char s2[100] = "";
     deletePalindromeWords(s2);
-    ASSERT_STRING("",s2);
+    ASSERT_STRING("", s2);
 
     char s3[100] = "cat";
     deletePalindromeWords(s3);
-    ASSERT_STRING("cat",s3);
+    ASSERT_STRING("cat", s3);
 }
 
-void test_stringAddition(){
-    char s1[100]="a b c";
-    char s2[100]="d e f g k l";
-    stringAddition(s1,s2);
-    ASSERT_STRING("a b c g k l",s1);
-    ASSERT_STRING("d e f g k l",s2);
+void test_stringAddition() {
+    char s1[100] = "a b c";
+    char s2[100] = "d e f g k l";
+    stringAddition(s1, s2);
+    ASSERT_STRING("a b c g k l", s1);
+    ASSERT_STRING("d e f g k l", s2);
 
-    char s3[100]="a b c";
-    char s4[100]="d e f g k l";
-    stringAddition(s4,s3);
-    ASSERT_STRING("a b c g k l",s3);
-    ASSERT_STRING("d e f g k l",s4);
+    char s3[100] = "a b c";
+    char s4[100] = "d e f g k l";
+    stringAddition(s4, s3);
+    ASSERT_STRING("a b c g k l", s3);
+    ASSERT_STRING("d e f g k l", s4);
 
-    char s5[100]="a b c";
-    char s6[100]="";
-    stringAddition(s5,s6);
-    ASSERT_STRING("a b c",s5);
-    ASSERT_STRING(" a b c",s6);
+    char s5[100] = "a b c";
+    char s6[100] = "";
+    stringAddition(s5, s6);
+    ASSERT_STRING("a b c", s5);
+    ASSERT_STRING(" a b c", s6);
 
-    char s7[100]="";
-    char s8[100]="";
-    stringAddition(s7,s8);
-    ASSERT_STRING("",s7);
-    ASSERT_STRING("",s8);
+    char s7[100] = "";
+    char s8[100] = "";
+    stringAddition(s7, s8);
+    ASSERT_STRING("", s7);
+    ASSERT_STRING("", s8);
+}
+
+void test_allLettersInString() {
+    char s1[100] = "c f k t a";
+    char s2[100] = "cat";
+    WordDescriptor w = {s2, getEndOfString(s2)};
+    assert(allLettersInString(s1, w));
 }
 
 void test() {
@@ -572,7 +579,7 @@ void test() {
     test_orderedAlphabetically();
     test_isPalindromeWords();
     test_numberPalindromeWords();
-    //test_outputWordsReverse();
+    test_outputWordsReverse();
     test_alternatingLines();
     test_copyWordsReverse();
     testAll_getWordBeforeFirstWordWithA();
@@ -583,6 +590,7 @@ void test() {
     test_precedingFirstOccurrence();
     test_deletePalindromeWords();
     test_stringAddition();
+    test_allLettersInString();
 }
 
 int main() {

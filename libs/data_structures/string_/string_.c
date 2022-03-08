@@ -4,6 +4,7 @@
 
 #include "string_.h"
 #include <ctype.h>
+
 size_t strlen_(const char *begin) {
     char *end = begin;
     while (*end != '\0')

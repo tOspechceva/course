@@ -58,7 +58,7 @@ int getWord(char *beginSearch, WordDescriptor *word) {
     return 1;
 }
 
-void *copyReverse(char *s, WordDescriptor word) {
+void copyReverse(char *s, WordDescriptor word) {
     char *rBegin = s;
     char *end = word.begin;
 
@@ -231,7 +231,9 @@ int numberPalindromeWords(char *s) {
 void getBagOfWords(BagOfWords *ws, char *s) {
     WordDescriptor w;
     ws->size = 0;
+
     char *end = copy(s, getEndOfString(s), _stringBuffer);
+
     char *begin = _stringBuffer;
     *end = ' ';
     end++;
@@ -341,24 +343,6 @@ void linesReverse(char *s) {
     *(begin - 1) = '\0';
 }
 
-void *copyWordsReverse(char *s, char *s2) {
-    char *begin = s;
-
-    BagOfWords ws;
-    getBagOfWords(&ws, begin);
-    char *buf = _stringBuffer;
-
-    for (int i = (int) ws.size - 1; i >= 0; --i) {
-        buf = copy(ws.words[i].begin, ws.words[i].end - 1, buf);
-        *buf = ' ';
-        buf++;
-    }
-
-    *(buf - 1) = '\0';
-
-    return copy(_stringBuffer, buf, s2);
-}
-
 bool isLetterA(WordDescriptor w) {
     char *begin = w.begin;
 
@@ -396,7 +380,6 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDesc
     }
     return NOT_FOUND_A_WORD_WITH_A;
 }
-
 
 void printWordBeforeFirstWordWithA(char *s) {
     char *begin = s;
@@ -592,43 +575,54 @@ void deletePalindromeWords(char *s) {
     *beginS = '\0';
 }
 
+void finishWriting(char *s2,BagOfWords bag1,BagOfWords bag2){
+    char *begin1 = getEndOfString(s2);
+    *begin1 = ' ';
+    begin1++;
+
+    for (int i = (int) bag2.size; i < bag1.size; ++i) {
+        char *end1 = copy(bag1.words[i].begin, bag1.words[i].end, begin1);
+        end1--;
+        *end1 = ' ';
+        end1++;
+        begin1 = end1;
+    }
+
+    if (begin1 != s2)
+        begin1--;
+    *begin1 = '\0';
+}
+
 void stringAddition(char *s1, char *s2) {
     BagOfWords bag1;
     BagOfWords bag2;
     getBagOf2Words(&bag1, s1, &bag2, s2);
+
     if (bag1.size > bag2.size) {
-        char *begin1= getEndOfString(s2);
-        *begin1= ' ';
-        begin1++;
-        for (int i = (int)bag2.size; i <  bag1.size; ++i) {
-            char *end1=copy(bag1.words[i].begin,bag1.words[i].end,begin1);
-            end1--;
-            *end1 = ' ';
-            end1++;
-            begin1=end1;
-        }
-        if (begin1 != s2)
-            begin1--;
-        *begin1='\0';
-
+        finishWriting(s2,bag1,bag2);
     } else {
-        char *begin1= getEndOfString(s1);
-        *begin1= ' ';
-        begin1++;
-        for (int i = (int)bag1.size; i <  bag2.size; ++i) {
-            char *end1 = copy(bag2.words[i].begin, bag2.words[i].end, begin1);
-            end1--;
-            *end1 = ' ';
-            end1++;
-            begin1 = end1;
-        }
-        if (begin1 != s1)
-            begin1--;
-        *begin1='\0';
+        finishWriting(s1,bag2,bag1);
     }
-
 }
 
+bool allLettersInString(char *str, WordDescriptor w) {
+    bool strSymbols[MAX_UNCHAR + 1] = {false};
+
+    while (*str) {
+        strSymbols[*str] = true;
+        str++;
+    }
+    char *beginWord = w.begin;
+
+    while (beginWord < w.end) {
+        if (strSymbols[*beginWord] == false)
+            return false;
+
+        beginWord++;
+    }
+
+    return true;
+}
 
 
 
