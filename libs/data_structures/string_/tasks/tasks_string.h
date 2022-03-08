@@ -86,4 +86,6 @@ bool wordsMadeIdenticalLetters(char *s);
 
 void allExceptLastOne(char *s);
 
+WordDescriptor precedingFirstOccurrence(char *s1, char *s2);
+
 #endif //COURSE_TASKS_STRING_H

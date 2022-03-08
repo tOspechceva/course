@@ -484,6 +484,26 @@ void test_allExceptLastOne(){
     allExceptLastOne(s4);
     ASSERT_STRING("",s4);
 }
+
+void test_precedingFirstOccurrence(){
+    char string[20];
+    char s1[10] = "q w ";
+    char s2[10] = "a w";
+    WordDescriptor word =
+            precedingFirstOccurrence(s1, s2);
+    wordDescriptorToString(word, string);
+    ASSERT_STRING ("q", string);
+
+    char string1[20];
+    char s3[10] = "cat sweet";
+    char s4[10] = "milk cat";
+    WordDescriptor word1 =
+            precedingFirstOccurrence(s3, s4);
+    wordDescriptorToString(word1, string1);
+    ASSERT_STRING ("cat", string1);
+}
+
+
 void test() {
     test_strlen_();
     test_find();
@@ -521,6 +541,7 @@ void test() {
     test_identicalWordsLine();
     test_wordsMadeIdenticalLetters();
     test_allExceptLastOne();
+    test_precedingFirstOccurrence();
 }
 
 int main() {

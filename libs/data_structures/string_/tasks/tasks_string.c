@@ -459,15 +459,14 @@ WordDescriptor lastWordInFirstStringInSecondString(char *s1, char *s2) {
     BagOfWords bag2;
     getBagOf2Words(&bag1, s1, &bag2, s2);
 
-    WordDescriptor w;
-    for (int j = 0; j < bag1.size; j++) {
+
+    for (int j = bag1.size; j >= 0; j--) {
         for (int i = 0; i < bag2.size; i++) {
             if (strcmp(bag1.words[j].begin, bag2.words[i].begin) == 0) {
-                w.begin = bag1.words[j].begin, w.end = bag1.words[j].end;
+                return bag1.words[j];
             }
         }
     }
-    return w;
 }
 
 bool identicalWordsLine(char *s) {
@@ -553,21 +552,20 @@ void allExceptLastOne(char *s) {
     *beginS = '\0';
 }
 
-char *precedingFirstOccurrence(char *s1, char *s2) {
-    char s3[MAX_STRING_SIZE];
-    char *begin1 = s3;
-    char *end1 = copy(s1, getEndOfString(s1), begin1);
-    *end1 = '\0';
-
-    char *begin2 = end1 + 1;
-    char *end2 = copy(s2, getEndOfString(s2), begin2);
-    *end2 = '\0';
-
+WordDescriptor precedingFirstOccurrence(char *s1, char *s2) {
     BagOfWords bag1;
-
     BagOfWords bag2;
     getBagOf2Words(&bag1, s1, &bag2, s2);
 
+    for (int j = 0; j < bag1.size; j++) {
+        for (int i = 0; i < bag2.size; i++) {
+            if (strcmp(bag1.words[j].begin, bag2.words[i].begin) == 0) {
+                if (j != 0)
+                    return bag1.words[j - 1];
+                return bag1.words[0];
+            }
+        }
+    }
 }
 
 
