@@ -12,3 +12,6 @@ libs/algorithms/CMakeFiles/algorithms.dir/ordered_array_set/ordered_aray.c.obj: 
  ../libs/algorithms/ordered_array_set/ordered_aray.c \
  ../libs/algorithms/ordered_array_set/ordered_aray.h \
  ../libs/algorithms/array/array.h
+libs/algorithms/CMakeFiles/algorithms.dir/time_sort/time_sort.c.obj: \
+ ../libs/algorithms/time_sort/time_sort.c \
+ ../libs/algorithms/time_sort/time_sort.h

@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/course/libs/algorithms/algorithm.c" "C:/course/cmake-build-debug/libs/algorithms/CMakeFiles/algorithms.dir/algorithm.c.obj"
   "C:/course/libs/algorithms/array/array.c" "C:/course/cmake-build-debug/libs/algorithms/CMakeFiles/algorithms.dir/array/array.c.obj"
   "C:/course/libs/algorithms/ordered_array_set/ordered_aray.c" "C:/course/cmake-build-debug/libs/algorithms/CMakeFiles/algorithms.dir/ordered_array_set/ordered_aray.c.obj"
+  "C:/course/libs/algorithms/time_sort/time_sort.c" "C:/course/cmake-build-debug/libs/algorithms/CMakeFiles/algorithms.dir/time_sort/time_sort.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

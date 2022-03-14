@@ -155,21 +155,20 @@ int getMinInArea(matrix m) {
     return min;
 }
 
+void swap(int *a, int *b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
 
-void selectionSort(int *a, const size_t n) {
-    if (n > 1) {
-        for (int k = 0; k < n; k++) {
-            int min = a[k];
-            int count = k;
-            for (int i = k; i < n; i++) {
-                if (a[i] < min) {
-                    min = a[i];
-                    count = i;
-                }
-            }
-            a[count] = a[k];
-            a[k] = min;
-        }
+}
+
+void selectionSort(int *a, const int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int minPos = i;
+        for (int j = i + 1; j < size; j++)
+            if (a[j] < a[minPos])
+                minPos = j;
+        swap(&a[i], &a[minPos]);
     }
 }
 

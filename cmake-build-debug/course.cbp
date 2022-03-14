@@ -164,6 +164,12 @@
 		<Unit filename="C:/course/libs/algorithms/ordered_array_set/ordered_aray.h">
 			<Option target="algorithms"/>
 		</Unit>
+		<Unit filename="C:/course/libs/algorithms/time_sort/time_sort.c">
+			<Option target="algorithms"/>
+		</Unit>
+		<Unit filename="C:/course/libs/algorithms/time_sort/time_sort.h">
+			<Option target="algorithms"/>
+		</Unit>
 		<Unit filename="C:/course/libs/data_structures/bitset/bitset.c">
 			<Option target="data_structures"/>
 		</Unit>

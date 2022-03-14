@@ -201,6 +201,30 @@ ordered_array_set/ordered_aray.c.s:
 	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/ordered_array_set/ordered_aray.c.s
 .PHONY : ordered_array_set/ordered_aray.c.s
 
+time_sort/time_sort.obj: time_sort/time_sort.c.obj
+.PHONY : time_sort/time_sort.obj
+
+# target to build an object file
+time_sort/time_sort.c.obj:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/time_sort/time_sort.c.obj
+.PHONY : time_sort/time_sort.c.obj
+
+time_sort/time_sort.i: time_sort/time_sort.c.i
+.PHONY : time_sort/time_sort.i
+
+# target to preprocess a source file
+time_sort/time_sort.c.i:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/time_sort/time_sort.c.i
+.PHONY : time_sort/time_sort.c.i
+
+time_sort/time_sort.s: time_sort/time_sort.c.s
+.PHONY : time_sort/time_sort.s
+
+# target to generate assembly for a file
+time_sort/time_sort.c.s:
+	cd /d C:\course\cmake-build-debug && $(MAKE) $(MAKESILENT) -f libs\algorithms\CMakeFiles\algorithms.dir\build.make libs/algorithms/CMakeFiles/algorithms.dir/time_sort/time_sort.c.s
+.PHONY : time_sort/time_sort.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -219,6 +243,9 @@ help:
 	@echo ... ordered_array_set/ordered_aray.obj
 	@echo ... ordered_array_set/ordered_aray.i
 	@echo ... ordered_array_set/ordered_aray.s
+	@echo ... time_sort/time_sort.obj
+	@echo ... time_sort/time_sort.i
+	@echo ... time_sort/time_sort.s
 .PHONY : help
 
 

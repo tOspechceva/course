@@ -53,7 +53,6 @@ void unordered_array_set_isAbleAppend(unordered_array_set *set) {
 }
 
 void unordered_array_set_insert(unordered_array_set *set, int value) {
-    *set = unordered_array_set_create(set->size + 1);
     if (unordered_array_set_in(set, value) == set->size) {
         unordered_array_set_isAbleAppend(set);
         append_(set->data, &set->size, value);
